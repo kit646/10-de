@@ -522,18 +522,18 @@ const allTests = [
       { q: "30. Tourists __________ to look at the alligators.", opts: ["A. come", "B. comes", "C. are come"], ans: "A. come", exp: "Chủ ngữ số nhiều 'Tourists' đi với động từ nguyên thể 'come'." }
     ],
     reorderQuestions: [
-      { q: "31.", words: ["you", "in your free time", "do", "what", "do", "?"], ans: "what do you do in your free time?", exp: "Dịch: Bạn làm gì vào thời gian rảnh?" },
-      { q: "32.", words: ["you", "study", "do", "for your exams", "late at night", "?"], ans: "do you study for your exams late at night?", exp: "Dịch: Bạn có học ôn thi vào đêm muộn không?" },
-      { q: "33.", words: ["at the end", "exams", "have", "do", "of this year", "they", "important", "?"], ans: "do they have important exams at the end of this year?", exp: "Dịch: Họ có các kỳ thi quan trọng vào cuối năm nay không?" },
-      { q: "34.", words: ["to", "go", "how many days a week", "she", "does", "university", "?"], ans: "how many days a week does she go to university?", exp: "Dịch: Cô ấy đi học đại học mấy ngày một tuần?" },
-      { q: "35.", words: ["class", "the", "time’s", "next", "what", "?"], ans: "what time’s the next class?", exp: "Dịch: Mấy giờ thì đến tiết học tiếp theo?" }
+      { q: "31.", words: ["in your free time", "do", "you", "what", "do?"], ans: "what do you do in your free time?", exp: "Dịch: Bạn làm gì vào thời gian rảnh?" },
+      { q: "32.", words: ["for your exams", "study", "you", "late at night?", "do"], ans: "do you study for your exams late at night?", exp: "Dịch: Bạn có học ôn thi vào đêm muộn không?" },
+      { q: "33.", words: ["at the end", "exams", "have", "do", "of this year?", "they", "important"], ans: "do they have important exams at the end of this year?", exp: "Dịch: Họ có các kỳ thi quan trọng vào cuối năm nay không?" },
+      { q: "34.", words: ["to", "go", "she", "how many days a week", "university?", "does"], ans: "how many days a week does she go to university?", exp: "Dịch: Cô ấy đi học đại học mấy ngày một tuần?" },
+      { q: "35.", words: ["class?", "the", "time’s", "next", "what"], ans: "what time’s the next class?", altAns: "what’s the next class time’s?", exp: "Dịch: Mấy giờ thì đến tiết học tiếp theo?" }
     ],
     verbQuestions: [
       { q: "36. They live in Brazil, but they _____ (be) from Spain.", ans: ["are"], exp: "Chủ ngữ số nhiều 'they' -> chia to be là 'are'." },
       { q: "37. We’re always really busy, so we _____ (not have) time to go to the supermarket during the week.", ans: ["don't have", "don’t have", "do not have"], exp: "Phủ định hiện tại đơn với 'we' -> 'don't have'." },
       { q: "38. Jake studies hard in the morning, so he _____ (relax) for half an hour after lunch.", ans: ["relaxes"], exp: "Chủ ngữ số ít 'he', động từ tận cùng bằng -x thêm -es -> 'relaxes'." },
       { q: "39. Joe’s not very interested in sport, so he _____ (not watch) football matches on TV.", ans: ["doesn't watch", "doesn’t watch", "does not watch"], exp: "Phủ định hiện tại đơn với 'he' -> 'doesn't watch'." },
-      { q: "40. _____ your sister _____ (go) to college in the evenings?", isSplit: true, part1: "40.", mid: "your sister", part2: "(go) to college in the evenings?", ans1: "does", ans2: "go", exp: "Câu hỏi hiện tại đơn với chủ ngữ số ít 'your sister': Does + S + go?" }
+      { q: "40. My journey to work only _____ (take) about twenty minutes.", ans: ["takes"], exp: "Chủ ngữ 'My journey' (số ít) -> chia động từ 'takes'." }
     ]
   },
 
@@ -593,11 +593,11 @@ const allTests = [
       { q: "30. A pilot __________ an aeroplane and takes passengers to different places.", opts: ["A. flying", "B. fly", "C. flies"], ans: "C. flies", exp: "Chủ ngữ số ít 'A pilot', động từ 'fly' đổi y -> ies thành 'flies'." }
     ],
     reorderQuestions: [
-      { q: "31.", words: ["where", "is", "your", "English teacher", "originally", "from", "?"], ans: "where is your english teacher originally from?", exp: "Dịch: Giáo viên tiếng Anh của bạn gốc ở đâu?" },
-      { q: "32.", words: ["my", "colleagues", "at work", "are", "very", "friendly", "."], ans: "my colleagues at work are very friendly.", exp: "Dịch: Các đồng nghiệp ở chỗ làm của tôi rất thân thiện." },
-      { q: "33.", words: ["how many days", "does", "your sister", "study", "at college", "?"], ans: "how many days does your sister study at college?", exp: "Dịch: Chị/em gái của bạn học ở trường cao đẳng mấy ngày?" },
-      { q: "34.", words: ["we", "don’t", "usually", "study", "together", "after dinner", "."], ans: "we don’t usually study together after dinner.", exp: "Dịch: Chúng tôi thường không học cùng nhau sau bữa tối." },
-      { q: "35.", words: ["what time", "do", "your classes", "finish", "on Fridays", "?"], ans: "what time do your classes finish on fridays?", exp: "Dịch: Các lớp học của bạn kết thúc lúc mấy giờ vào thứ Sáu?" }
+      { q: "31.", words: ["originally", "your", "is", "where", "from?", "English teacher"], ans: "where is your English teacher originally from?", exp: "Dịch: Giáo viên tiếng Anh của bạn gốc ở đâu?" },
+      { q: "32.", words: ["friendly", "at work", "colleagues", ".", "are", "my", "very"], ans: "my colleagues at work are very friendly.", exp: "Dịch: Các đồng nghiệp ở chỗ làm của tôi rất thân thiện." },
+      { q: "33.", words: ["study", "your sister", "does", "at college", "?", "how many days"], ans: "how many days does your sister study at college?", exp: "Dịch: Chị/em gái của bạn học ở trường cao đẳng mấy ngày?" },
+      { q: "34.", words: ["together", "usually", "don’t", "after dinner", ".", "we", "study"], ans: "we don’t usually study together after dinner.", exp: "Dịch: Chúng tôi thường không học cùng nhau sau bữa tối." },
+      { q: "35.", words: ["finish", "your classes", "do", "on Fridays", "?", "what time"], ans: "what time do your classes finish on fridays?", exp: "Dịch: Các lớp học của bạn kết thúc lúc mấy giờ vào thứ Sáu?" }
     ],
     verbQuestions: [
       { q: "36. My cousins _____ (be) from Chile, but they live in Peru now.", ans: ["are"], exp: "Chủ ngữ số nhiều 'My cousins' -> 'are'." },
@@ -664,11 +664,11 @@ const allTests = [
       { q: "30. Shop assistants __________ customers find what they need.", opts: ["A. helping", "B. helps", "C. help"], ans: "C. help", exp: "Chủ ngữ số nhiều 'Shop assistants' -> động từ nguyên thể 'help'." }
     ],
     reorderQuestions: [
-      { q: "31.", words: ["what", "nationality", "are", "your", "new classmates", "?"], ans: "what nationality are your new classmates?", exp: "Dịch: Các bạn cùng lớp mới của bạn mang quốc tịch gì?" },
-      { q: "32.", words: ["my brother", "doesn’t", "usually", "work", "in the evening", "."], ans: "my brother doesn’t usually work in the evening.", exp: "Dịch: Anh/em trai tôi thường không làm việc vào buổi tối." },
-      { q: "33.", words: ["how often", "do", "you", "have", "English exams", "?"], ans: "how often do you have english exams?", exp: "Dịch: Bao lâu thì bạn có bài kiểm tra tiếng Anh một lần?" },
-      { q: "34.", words: ["where", "do", "your parents", "live", "at the moment", "?"], ans: "where do your parents live at the moment?", exp: "Dịch: Hiện tại bố mẹ bạn đang sống ở đâu?" },
-      { q: "35.", words: ["she", "studies", "at the college", "three days a week", "."], ans: "she studies at the college three days a week.", exp: "Dịch: Cô ấy học ở trường cao đẳng 3 ngày một tuần." }
+      { q: "31.", words: ["new classmates", "are", "nationality", "?", "what", "your"], ans: "what nationality are your new classmates?", exp: "Dịch: Các bạn cùng lớp mới của bạn mang quốc tịch gì?" },
+      { q: "32.", words: ["in the evening", "usually", "doesn’t", ".", "work", "my brother"], ans: "my brother doesn’t usually work in the evening.", exp: "Dịch: Anh/em trai tôi thường không làm việc vào buổi tối." },
+      { q: "33.", words: ["English exams", "you", "do", "?", "have", "how often"], ans: "how often do you have english exams?", exp: "Dịch: Bao lâu thì bạn có bài kiểm tra tiếng Anh một lần?" },
+      { q: "34.", words: ["at the moment", "your parents", "do", "?", "live", "where"], ans: "where do your parents live at the moment?", exp: "Dịch: Hiện tại bố mẹ bạn đang sống ở đâu?" },
+      { q: "35.", words: ["three days a week", "at the college", ".", "studies", "she"], ans: "she studies at the college three days a week.", exp: "Dịch: Cô ấy học ở trường cao đẳng 3 ngày một tuần." }
     ],
     verbQuestions: [
       { q: "36. My classmates _____ (be) very helpful when I have a problem.", ans: ["are"], exp: "Chủ ngữ số nhiều 'My classmates' -> 'are'." },
@@ -735,11 +735,11 @@ const allTests = [
       { q: "30. A photographer __________ pictures of people and places.", opts: ["A. takes", "B. take", "C. taking"], ans: "A. takes", exp: "Chủ ngữ số ít 'A photographer' -> động từ thêm -s ('takes')." }
     ],
     reorderQuestions: [
-      { q: "31.", words: ["where", "are", "your", "new classmates", "from", "originally", "?"], ans: "where are your new classmates from originally?", exp: "Dịch: Các bạn cùng lớp mới của bạn gốc ở đâu?" },
-      { q: "32.", words: ["my cousin", "isn’t", "an", "engineer", "or", "a", "pilot", "."], ans: "my cousin isn’t an engineer or a pilot.", exp: "Dịch: Anh/em họ của tôi không phải là kỹ sư hay phi công." },
-      { q: "33.", words: ["how many evenings", "do", "you", "study", "English", "each week", "?"], ans: "how many evenings do you study english each week?", exp: "Dịch: Bạn học tiếng Anh mấy buổi tối mỗi tuần?" },
-      { q: "34.", words: ["the students", "don’t", "usually", "use", "their phones", "in class", "."], ans: "the students don’t usually use their phones in class.", exp: "Dịch: Học sinh thường không dùng điện thoại trong lớp." },
-      { q: "35.", words: ["what time", "does", "the last lesson", "finish", "on Wednesdays", "?"], ans: "what time does the last lesson finish on wednesdays?", exp: "Dịch: Tiết học cuối cùng kết thúc lúc mấy giờ vào thứ Tư?" }
+      { q: "31.", words: ["from", "new classmates", "are", "?", "where", "originally", "your"], ans: "where are your new classmates from originally?", exp: "Dịch: Các bạn cùng lớp mới của bạn gốc ở đâu?" },
+      { q: "32.", words: ["engineer", "isn’t", "pilot", ".", "my cousin", "or", "an", "a"], ans: "my cousin isn’t an engineer or a pilot.", exp: "Dịch: Anh/em họ của tôi không phải là kỹ sư hay phi công." },
+      { q: "33.", words: ["each week", "study", "you", "?", "how many evenings", "English", "do"], ans: "how many evenings do you study english each week?", exp: "Dịch: Bạn học tiếng Anh mấy buổi tối mỗi tuần?" },
+      { q: "34.", words: ["their phones", "usually", "don’t", ".", "in class", "use", "the students"], ans: "the students don’t usually use their phones in class.", exp: "Dịch: Học sinh thường không dùng điện thoại trong lớp." },
+      { q: "35.", words: ["on Wednesdays", "the last lesson", "does", "?", "finish", "what time"], ans: "what time does the last lesson finish on wednesdays?", exp: "Dịch: Tiết học cuối cùng kết thúc lúc mấy giờ vào thứ Tư?" }
     ],
     verbQuestions: [
       { q: "36. My best friend _____ (be) from Portugal.", ans: ["is"], exp: "Chủ ngữ số ít 'My best friend' -> 'is'." },
@@ -806,11 +806,11 @@ const allTests = [
       { q: "30. A shop assistant __________ customers in a shop.", opts: ["A. helps", "B. help", "C. helping"], ans: "A. helps", exp: "Chủ ngữ số ít 'A shop assistant' -> 'helps'." }
     ],
     reorderQuestions: [
-      { q: "31.", words: ["what", "nationality", "is", "your", "new", "classmate", "?"], ans: "what nationality is your new classmate?", exp: "Dịch: Bạn cùng lớp mới của bạn mang quốc tịch gì?" },
-      { q: "32.", words: ["my manager", "isn’t", "very", "strict", "."], ans: "my manager isn’t very strict.", exp: "Dịch: Quản lý của tôi không nghiêm khắc lắm." },
-      { q: "33.", words: ["where", "does", "your aunt", "work", "during the week", "?"], ans: "where does your aunt work during the week?", exp: "Dịch: Dì của bạn làm việc ở đâu trong tuần?" },
-      { q: "34.", words: ["we", "don’t", "usually", "have", "exams", "in the first week", "."], ans: "we don’t usually have exams in the first week.", exp: "Dịch: Chúng tôi thường không có bài thi vào tuần đầu tiên." },
-      { q: "35.", words: ["what time", "do", "the students", "finish", "their last class", "?"], ans: "what time do the students finish their last class?", exp: "Dịch: Học sinh kết thúc tiết học cuối cùng lúc mấy giờ?" }
+      { q: "31.", words: ["classmate’s", "is", "nationality", "?", "new", "what", "your"], ans: "what nationality is your new classmate’s?", altAns: "what is your new classmate’s nationality?", exp: "Dịch: Bạn cùng lớp mới của bạn mang quốc tịch gì?" },
+      { q: "32.", words: ["strict", "isn’t", ".", "very", "my manager"], ans: "my manager isn’t very strict.", exp: "Dịch: Quản lý của tôi không nghiêm khắc lắm." },
+      { q: "33.", words: ["during the week", "work", "your aunt", "?", "does", "where"], ans: "where does your aunt work during the week?", exp: "Dịch: Dì của bạn làm việc ở đâu trong tuần?" },
+      { q: "34.", words: ["in the first week", "have", "usually", ".", "exams", "don’t", "we"], ans: "we don’t usually have exams in the first week.", exp: "Dịch: Chúng tôi thường không có bài thi vào tuần đầu tiên." },
+      { q: "35.", words: ["their last class", "the students", "do", "?", "finish", "what time"], ans: "what time do the students finish their last class?", exp: "Dịch: Học sinh kết thúc tiết học cuối cùng lúc mấy giờ?" }
     ],
     verbQuestions: [
       { q: "36. My neighbours _____ (be) from Mexico.", ans: ["are"], exp: "Chủ ngữ số nhiều 'My neighbours' -> 'are'." },
@@ -877,11 +877,11 @@ const allTests = [
       { q: "30. Engineers __________ plans for buildings and roads.", opts: ["A. make", "B. makes", "C. making"], ans: "A. make", exp: "Chủ ngữ số nhiều 'Engineers' -> động từ nguyên mẫu 'make'." }
     ],
     reorderQuestions: [
-      { q: "31.", words: ["why", "does", "your English teacher", "study", "at night", "?"], ans: "why does your english teacher study at night?", exp: "Dịch: Tại sao giáo viên tiếng Anh của bạn lại học vào ban đêm?" },
-      { q: "32.", words: ["my friends", "aren’t", "usually", "at home", "on Sundays", "."], ans: "my friends aren’t usually at home on sundays.", exp: "Dịch: Bạn bè tôi thường không ở nhà vào Chủ nhật." },
-      { q: "33.", words: ["how often", "does", "your manager", "check", "the timetable", "?"], ans: "how often does your manager check the timetable?", exp: "Dịch: Quản lý của bạn kiểm tra thời khóa biểu bao lâu một lần?" },
-      { q: "34.", words: ["I", "don’t", "usually", "study", "English", "late at night", "."], ans: "i don’t usually study english late at night.", exp: "Dịch: Tôi thường không học tiếng Anh vào đêm muộn." },
-      { q: "35.", words: ["where", "do", "your classmates", "have", "their English lessons", "?"], ans: "where do your classmates have their english lessons?", exp: "Dịch: Các bạn cùng lớp của bạn học tiếng Anh ở đâu?" }
+      { q: "31.", words: ["at night", "study", "your English teacher", "?", "does", "English", "why"], ans: "why does your english teacher study english at night?", exp: "Dịch: Tại sao giáo viên tiếng Anh của bạn lại học tiếng Anh vào ban đêm?" },
+      { q: "32.", words: ["on Sundays", "at home", "usually", ".", "aren’t", "my friends"], ans: "my friends aren’t usually at home on sundays.", exp: "Dịch: Bạn bè tôi thường không ở nhà vào Chủ nhật." },
+      { q: "33.", words: ["the timetable", "your manager", "does", "?", "check", "how often"], ans: "how often does your manager check the timetable?", exp: "Dịch: Quản lý của bạn kiểm tra thời khóa biểu bao lâu một lần?" },
+      { q: "34.", words: ["late at night", "English", "usually", ".", "study", "don’t", "I"], ans: "i don’t usually study english late at night.", exp: "Dịch: Tôi thường không học tiếng Anh vào đêm muộn." },
+      { q: "35.", words: ["their English lessons", "your classmates", "do", "?", "have", "where"], ans: "where do your classmates have their english lessons?", exp: "Dịch: Các bạn cùng lớp của bạn học tiếng Anh ở đâu?" }
     ],
     verbQuestions: [
       { q: "36. My brother and I _____ (be) from the Czech Republic.", ans: ["are"], exp: "Chủ ngữ số nhiều 'My brother and I' -> 'are'." },
@@ -948,11 +948,11 @@ const allTests = [
       { q: "30. A dentist __________ people look after their teeth.", opts: ["A. help", "B. helping", "C. helps"], ans: "C. helps", exp: "Chủ ngữ số ít 'A dentist' -> động từ thêm -s ('helps')." }
     ],
     reorderQuestions: [
-      { q: "31.", words: ["where", "is", "your", "new manager", "from", "originally", "?"], ans: "where is your new manager from originally?", exp: "Dịch: Người quản lý mới của bạn gốc ở đâu?" },
-      { q: "32.", words: ["the exams", "at the end", "of the term", "aren’t", "easy", "."], ans: "the exams at the end of the term aren’t easy.", exp: "Dịch: Các kỳ thi vào cuối học kỳ không hề dễ." },
-      { q: "33.", words: ["how many mornings", "does", "Mateo", "go", "to college", "?"], ans: "how many mornings does mateo go to college?", exp: "Dịch: Mateo đi học cao đẳng mấy buổi sáng?" },
-      { q: "34.", words: ["he", "doesn’t", "usually", "drink", "coffee", "in the evening", "."], ans: "he doesn’t usually drink coffee in the evening.", exp: "Dịch: Anh ấy thường không uống cà phê vào buổi tối." },
-      { q: "35.", words: ["what time", "do", "you", "have", "a break", "in the morning", "?"], ans: "what time do you have a break in the morning?", exp: "Dịch: Bạn nghỉ giải lao lúc mấy giờ vào buổi sáng?" }
+      { q: "31.", words: ["from", "new manager", "is", "?", "originally", "where", "your"], ans: "where is your new manager from originally?", exp: "Dịch: Người quản lý mới của bạn gốc ở đâu?" },
+      { q: "32.", words: ["easy", "of the term", "at the end", ".", "aren’t", "the exams"], ans: "the exams at the end of the term aren’t easy.", exp: "Dịch: Các kỳ thi vào cuối học kỳ không hề dễ." },
+      { q: "33.", words: ["to college", "Mateo", "does", "?", "go", "how many mornings"], ans: "how many mornings does mateo go to college?", exp: "Dịch: Mateo đi học cao đẳng mấy buổi sáng?" },
+      { q: "34.", words: ["in the evening", "coffee", "usually", ".", "drink", "doesn’t", "he"], ans: "he doesn’t usually drink coffee in the evening.", exp: "Dịch: Anh ấy thường không uống cà phê vào buổi tối." },
+      { q: "35.", words: ["in the morning", "a break", "you", "?", "do", "have", "what time"], ans: "what time do you have a break in the morning?", exp: "Dịch: Bạn nghỉ giải lao lúc mấy giờ vào buổi sáng?" }
     ],
     verbQuestions: [
       { q: "36. The nurses in this hospital _____ (be) very kind.", ans: ["are"], exp: "Chủ ngữ số nhiều 'The nurses' -> 'are'." },
@@ -1019,11 +1019,11 @@ const allTests = [
       { q: "30. A nurse __________ after patients in a hospital.", opts: ["A. look", "B. looks", "C. looking"], ans: "B. looks", exp: "Chủ ngữ số ít 'A nurse' -> động từ thêm -s ('looks')." }
     ],
     reorderQuestions: [
-      { q: "31.", words: ["what", "is", "your", "favourite", "subject", "at college", "?"], ans: "what is your favourite subject at college?", exp: "Dịch: Môn học yêu thích của bạn ở trường cao đẳng là gì?" },
-      { q: "32.", words: ["the supermarket", "isn’t", "quiet", "on", "Saturday mornings", "."], ans: "the supermarket isn’t quiet on saturday mornings.", exp: "Dịch: Siêu thị không vắng vẻ vào các buổi sáng thứ Bảy." },
-      { q: "33.", words: ["how often", "do", "you", "call", "your family", "?"], ans: "how often do you call your family?", exp: "Dịch: Bạn gọi điện cho gia đình bao lâu một lần?" },
-      { q: "34.", words: ["she", "doesn’t", "usually", "work", "on", "Sundays", "."], ans: "she doesn’t usually work on sundays.", exp: "Dịch: Cô ấy thường không làm việc vào Chủ nhật." },
-      { q: "35.", words: ["where", "do", "the nursing students", "have", "their afternoon classes", "?"], ans: "where do the nursing students have their afternoon classes?", exp: "Dịch: Các sinh viên điều dưỡng học tiết buổi chiều ở đâu?" }
+      { q: "31.", words: ["at college", "subject", "is", "?", "favourite", "what", "your"], ans: "what is your favourite subject at college?", exp: "Dịch: Môn học yêu thích của bạn ở trường cao đẳng là gì?" },
+      { q: "32.", words: ["Saturday mornings", "quiet", "isn’t", ".", "on", "the supermarket"], ans: "the supermarket isn’t quiet on saturday mornings.", exp: "Dịch: Siêu thị không vắng vẻ vào các buổi sáng thứ Bảy." },
+      { q: "33.", words: ["your family", "you", "do", "?", "call", "how often"], ans: "how often do you call your family?", exp: "Dịch: Bạn gọi điện cho gia đình bao lâu một lần?" },
+      { q: "34.", words: ["Sundays", "work", "usually", ".", "on", "doesn’t", "she"], ans: "she doesn’t usually work on sundays.", exp: "Dịch: Cô ấy thường không làm việc vào Chủ nhật." },
+      { q: "35.", words: ["their afternoon classes", "the nursing students", "do", "?", "have", "where"], ans: "where do the nursing students have their afternoon classes?", exp: "Dịch: Các sinh viên điều dưỡng học tiết buổi chiều ở đâu?" }
     ],
     verbQuestions: [
       { q: "36. Biology and chemistry _____ (be) important subjects for nurses.", ans: ["are"], exp: "Chủ ngữ số nhiều 'Biology and chemistry' -> 'are'." },
@@ -1090,11 +1090,11 @@ const allTests = [
       { q: "30. A taxi driver __________ all the streets in the city.", opts: ["A. know", "B. knowing", "C. knows"], ans: "C. knows", exp: "Chủ ngữ số ít 'A taxi driver' -> 'knows'." }
     ],
     reorderQuestions: [
-      { q: "31.", words: ["where", "are", "your", "neighbours", "originally", "from", "?"], ans: "where are your neighbours originally from?", exp: "Dịch: Hàng xóm của bạn gốc ở đâu?" },
-      { q: "32.", words: ["my", "business classes", "aren’t", "on", "Friday evenings", "."], ans: "my business classes aren’t on friday evenings.", exp: "Dịch: Các lớp kinh doanh của tôi không diễn ra vào tối thứ Sáu." },
-      { q: "33.", words: ["how many hours", "does", "Omar", "work", "every weekday", "?"], ans: "how many hours does omar work every weekday?", exp: "Dịch: Omar làm việc bao nhiêu tiếng mỗi ngày trong tuần?" },
-      { q: "34.", words: ["we", "don’t", "usually", "watch", "TV", "in the morning", "."], ans: "we don’t usually watch tv in the morning.", exp: "Dịch: Chúng tôi thường không xem TV vào buổi sáng." },
-      { q: "35.", words: ["what", "do", "you", "usually", "do", "on Sundays", "?"], ans: "what do you usually do on sundays?", exp: "Dịch: Bạn thường làm gì vào các ngày Chủ nhật?" }
+      { q: "31.", words: ["from", "neighbours", "are", "?", "originally", "where", "your"], ans: "where are your neighbours originally from?", exp: "Dịch: Hàng xóm của bạn gốc ở đâu?" },
+      { q: "32.", words: ["Friday evenings", "aren’t", "business classes", ".", "on", "my"], ans: "my business classes aren’t on friday evenings.", exp: "Dịch: Các lớp kinh doanh của tôi không diễn ra vào tối thứ Sáu." },
+      { q: "33.", words: ["every weekday", "Omar", "does", "?", "work", "how many hours"], ans: "how many hours does omar work every weekday?", exp: "Dịch: Omar làm việc bao nhiêu tiếng mỗi ngày trong tuần?" },
+      { q: "34.", words: ["in the morning", "TV", "usually", ".", "watch", "don’t", "we"], ans: "we don’t usually watch tv in the morning.", exp: "Dịch: Chúng tôi thường không xem TV vào buổi sáng." },
+      { q: "35.", words: ["on Sundays", "usually", "you", "?", "do", "what", "do"], ans: "what do you usually do on sundays?", exp: "Dịch: Bạn thường làm gì vào các ngày Chủ nhật?" }
     ],
     verbQuestions: [
       { q: "36. My son _____ (be) five years old.", ans: ["is"], exp: "Chủ ngữ số ít 'My son' -> 'is'." },
@@ -1138,7 +1138,7 @@ const allTests = [
       { val: "c", text: "c. Two tickets, please. How much are they?" },
       { val: "d", text: "d. No problem. Good luck in your test!" },
       { val: "e", text: "e. That’s great! Can I see your photos?" },
-      { val: "f", text: "f. Yes, let’s meet outside the café at five十五." }
+      { val: "f", text: "f. Yes, let’s meet outside the café at five fifteen." }
     ],
     matchQuestions: [
       { q: "15. Could I have a map of the museum, please?", ans: "a", exp: "a. Certainly. Here is a map in English. (Xin bản đồ bảo tàng -> Chắc chắn rồi, đây là bản đồ bằng tiếng Anh.)" },
@@ -1161,11 +1161,11 @@ const allTests = [
       { q: "30. Receptionists __________ visitors and answer questions.", opts: ["A. welcome", "B. welcomes", "C. welcoming"], ans: "A. welcome", exp: "Chủ ngữ số nhiều 'Receptionists' -> động từ nguyên mẫu 'welcome'." }
     ],
     reorderQuestions: [
-      { q: "31.", words: ["what", "nationality", "are", "the", "new students", "in your class", "?"], ans: "what nationality are the new students in your class?", exp: "Dịch: Các học sinh mới trong lớp bạn mang quốc tịch gì?" },
-      { q: "32.", words: ["the art museum", "isn’t", "open", "on", "Mondays", "."], ans: "the art museum isn’t open on mondays.", exp: "Dịch: Bảo tàng nghệ thuật không mở cửa vào các ngày thứ Hai." },
-      { q: "33.", words: ["how many days a week", "does", "Elena", "work", "at the museum", "?"], ans: "how many days a week does elena work at the museum?", exp: "Dịch: Elena làm việc ở bảo tàng mấy ngày một tuần?" },
-      { q: "34.", words: ["they", "don’t", "usually", "take", "the bus", "to college", "."], ans: "they don’t usually take the bus to college.", exp: "Dịch: Họ thường không đi xe buýt đến trường cao đẳng." },
-      { q: "35.", words: ["what time", "do", "your", "afternoon lessons", "start", "?"], ans: "what time do your afternoon lessons start?", exp: "Dịch: Các tiết học buổi chiều của bạn bắt đầu lúc mấy giờ?" }
+      { q: "31.", words: ["in your class", "new students", "are", "?", "nationality", "the", "what"], ans: "what nationality are the new students in your class?", exp: "Dịch: Các học sinh mới trong lớp bạn mang quốc tịch gì?" },
+      { q: "32.", words: ["Mondays", "open", "isn’t", ".", "on", "the art museum"], ans: "the art museum isn’t open on mondays.", exp: "Dịch: Bảo tàng nghệ thuật không mở cửa vào các ngày thứ Hai." },
+      { q: "33.", words: ["at the museum", "Elena", "does", "?", "work", "how many days a week"], ans: "how many days a week does elena work at the museum?", exp: "Dịch: Elena làm việc ở bảo tàng mấy ngày một tuần?" },
+      { q: "34.", words: ["to college", "the bus", "usually", ".", "take", "don’t", "they"], ans: "they don’t usually take the bus to college.", exp: "Dịch: Họ thường không đi xe buýt đến trường cao đẳng." },
+      { q: "35.", words: ["start", "afternoon lessons", "do", "?", "your", "what time"], ans: "what time do your afternoon lessons start?", exp: "Dịch: Các tiết học buổi chiều của bạn bắt đầu lúc mấy giờ?" }
     ],
     verbQuestions: [
       { q: "36. The old buildings in this city _____ (be) very beautiful.", ans: ["are"], exp: "Chủ ngữ số nhiều 'The old buildings' -> 'are'." },
@@ -1178,10 +1178,44 @@ const allTests = [
 ];
 
 // ============================================================================
-// STATE MANAGEMENT FOR ALL 10 TESTS
+// SHUFFLE HELPER & STATE MANAGEMENT FOR ALL 10 TESTS
 // ============================================================================
 let currentTestIndex = 0; // 0 to 9
 const userProgress = {}; // Stores answers & scores per test index
+
+function normalizeSentence(str) {
+  return (str || "")
+    .toLowerCase()
+    .replace(/[’‘`]/g, "'")
+    .replace(/\s+/g, " ")
+    .replace(/\s+([?.!,])/g, "$1")
+    .trim();
+}
+
+// Guaranteed Fisher-Yates shuffle that never matches the exact target sentence order
+function shuffleWords(words, correctAns) {
+  const indices = words.map((_, i) => i);
+  if (indices.length <= 1) return indices;
+
+  let shuffled = [...indices];
+  let attempts = 0;
+  do {
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    attempts++;
+  } while (
+    normalizeSentence(shuffled.map(idx => words[idx]).join(" ")) === normalizeSentence(correctAns) &&
+    attempts < 20
+  );
+
+  // Fallback swap if random shuffle still accidentally matched
+  if (normalizeSentence(shuffled.map(idx => words[idx]).join(" ")) === normalizeSentence(correctAns)) {
+    [shuffled[0], shuffled[1]] = [shuffled[1], shuffled[0]];
+  }
+  return shuffled;
+}
 
 function initStateForTest(idx) {
   const t = allTests[idx];
@@ -1196,7 +1230,9 @@ function initStateForTest(idx) {
     matchAnswers: Array(6).fill(""),
     mcqAnswers: Array(10).fill(""),
     reorderAnswers: t.reorderQuestions.map(() => []),
-    verbAnswers: Array(4).fill(""),
+    reorderBankOrder: t.reorderQuestions.map(item => shuffleWords(item.words, item.ans)),
+    reorderTyped: Array(5).fill(""),
+    verbAnswers: Array(5).fill(""),
     verb40_1: "",
     verb40_2: ""
   };
@@ -1382,23 +1418,39 @@ function renderCurrentTest() {
   html += `<div class="part-title">Part 2. Put the words in the correct order. (5 questions)</div>`;
   test.reorderQuestions.forEach((item, qIdx) => {
     const chosenIndices = state.reorderAnswers[qIdx];
+    const bankOrder = state.reorderBankOrder[qIdx] || item.words.map((_, i) => i);
     const chosenWords = chosenIndices.map(i => ({ word: item.words[i], origIdx: i }));
-    const bankWords = item.words
-      .map((w, i) => ({ word: w, origIdx: i }))
-      .filter(obj => !chosenIndices.includes(obj.origIdx));
+    const bankWords = bankOrder
+      .filter(origIdx => !chosenIndices.includes(origIdx))
+      .map(origIdx => ({ word: item.words[origIdx], origIdx }));
+    const currentBuiltText = chosenWords.map(o => o.word).join(" ").replace(/\s+([?.!,])/g, "$1");
+    const typedVal = state.reorderTyped[qIdx] !== "" ? state.reorderTyped[qIdx] : currentBuiltText;
 
     html += `
       <div class="question-card" id="card_reorder_${qIdx}">
-        <div class="font-bold">${item.q} <span class="text-xs font-normal text-slate-500">(Chạm vào từng cụm từ bên dưới để xếp thành câu hoàn chỉnh)</span></div>
-        <div class="reorder-zone">
-          ${chosenWords.map(obj => `
-            <span class="reorder-word" onclick="removeReorderWord(${qIdx}, ${obj.origIdx})">${obj.word}</span>
-          `).join('')}
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+          <div class="font-bold">${item.q} <span class="text-xs font-normal text-slate-500">(Chạm vào từng từ đã xáo trộn bên dưới để xếp câu, hoặc tự gõ vào ô)</span></div>
+          <div class="flex items-center gap-1.5">
+            <button type="button" onclick="reshuffleQuestion(${qIdx})" class="text-xs font-bold px-2.5 py-1 rounded-lg border border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-700 transition">
+              🔀 Xáo trộn lại
+            </button>
+            <button type="button" onclick="clearReorderQuestion(${qIdx})" class="text-xs font-bold px-2.5 py-1 rounded-lg border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 transition">
+              ↺ Xóa câu này
+            </button>
+          </div>
         </div>
-        <div class="word-bank mt-2 mb-0">
+        <div class="reorder-zone" id="zone_g${31 + qIdx}">
+          ${chosenWords.length > 0 ? chosenWords.map(obj => `
+            <span class="reorder-word" onclick="removeReorderWord(${qIdx}, ${obj.origIdx})" title="Chạm để bỏ từ này">${obj.word}</span>
+          `).join('') : `<span class="text-xs text-slate-400 italic self-center">Chạm vào các từ bên dưới để xếp thành câu...</span>`}
+        </div>
+        <div class="word-bank mt-2 mb-2" id="bank_g${31 + qIdx}">
           ${bankWords.map(obj => `
             <span class="reorder-word bg-white" onclick="addReorderWord(${qIdx}, ${obj.origIdx})">${obj.word}</span>
           `).join('')}
+        </div>
+        <div class="mt-2">
+          <input type="text" id="reorder_input_${qIdx}" value="${typedVal.replace(/"/g, '&quot;')}" oninput="onTypeReorder(${qIdx}, this.value)" placeholder="Hoặc tự gõ cả câu trả lời tại đây..." class="w-full px-3 py-1.5 text-sm rounded-lg border border-slate-300 bg-white focus:border-amber-500 outline-none font-semibold text-slate-800" autocomplete="off">
         </div>
         <span class="status-tag" id="status_reorder_${qIdx}"></span>
         <div class="explanation-box"><b>Câu đúng:</b> ${item.ans}<br>${item.exp}</div>
@@ -1455,9 +1507,13 @@ function renderCurrentTest() {
 // ============================================================================
 function saveCurrentInputsToState() {
   const st = userProgress[currentTestIndex];
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 5; i++) {
     const el = document.getElementById(`verb_${i}`);
     if (el) st.verbAnswers[i] = el.value;
+    const rEl = document.getElementById(`reorder_input_${i}`);
+    if (rEl && st.reorderAnswers[i].length === 0) {
+      st.reorderTyped[i] = rEl.value;
+    }
   }
   const el40_1 = document.getElementById('verb40_1');
   const el40_2 = document.getElementById('verb40_2');
@@ -1498,17 +1554,42 @@ function selectMCQ(qIdx, val) {
 }
 
 function addReorderWord(qIdx, wordOrigIdx) {
-  userProgress[currentTestIndex].reorderAnswers[qIdx].push(wordOrigIdx);
+  const st = userProgress[currentTestIndex];
+  st.reorderAnswers[qIdx].push(wordOrigIdx);
+  st.reorderTyped[qIdx] = "";
   renderCurrentTest();
 }
 
 function removeReorderWord(qIdx, wordOrigIdx) {
-  const arr = userProgress[currentTestIndex].reorderAnswers[qIdx];
+  const st = userProgress[currentTestIndex];
+  const arr = st.reorderAnswers[qIdx];
   const pos = arr.indexOf(wordOrigIdx);
   if (pos !== -1) {
     arr.splice(pos, 1);
+    st.reorderTyped[qIdx] = "";
     renderCurrentTest();
   }
+}
+
+function reshuffleQuestion(qIdx) {
+  const st = userProgress[currentTestIndex];
+  const item = allTests[currentTestIndex].reorderQuestions[qIdx];
+  st.reorderAnswers[qIdx] = [];
+  st.reorderTyped[qIdx] = "";
+  st.reorderBankOrder[qIdx] = shuffleWords(item.words, item.ans);
+  renderCurrentTest();
+}
+
+function clearReorderQuestion(qIdx) {
+  const st = userProgress[currentTestIndex];
+  st.reorderAnswers[qIdx] = [];
+  st.reorderTyped[qIdx] = "";
+  renderCurrentTest();
+}
+
+function onTypeReorder(qIdx, val) {
+  const st = userProgress[currentTestIndex];
+  st.reorderTyped[qIdx] = val;
 }
 
 // ============================================================================
@@ -1527,15 +1608,6 @@ function markCard(cardId, statusId, isCorrect, correctText) {
     card.classList.add('is-incorrect');
     status.innerHTML = `<span class="status-incorrect">✗ Sai (Đáp án đúng: ${correctText})</span>`;
   }
-}
-
-function normalizeSentence(str) {
-  return str
-    .toLowerCase()
-    .replace(/[’']/g, "'")
-    .replace(/\s+/g, " ")
-    .replace(/\s+([?.!,])/g, "$1")
-    .trim();
 }
 
 function gradeCurrentTest(shouldScroll = true) {
@@ -1582,7 +1654,13 @@ function gradeCurrentTest(shouldScroll = true) {
   // 5. Grade Reorder (5 questions)
   test.reorderQuestions.forEach((item, qIdx) => {
     const chosenWords = st.reorderAnswers[qIdx].map(i => item.words[i]).join(" ");
-    const isOk = normalizeSentence(chosenWords) === normalizeSentence(item.ans);
+    const rawCandidate = st.reorderTyped[qIdx] && st.reorderTyped[qIdx].trim() !== ""
+      ? st.reorderTyped[qIdx]
+      : chosenWords;
+    const normUser = normalizeSentence(rawCandidate);
+    const isOk =
+      normUser === normalizeSentence(item.ans) ||
+      (item.altAns && normUser === normalizeSentence(item.altAns));
     if (isOk) correctB++;
     markCard(`card_reorder_${qIdx}`, `status_reorder_${qIdx}`, isOk, item.ans);
   });

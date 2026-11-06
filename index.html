@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>BỘ 10 ĐỀ ÔN TẬP TIẾNG ANH A2.1 - PROGRESS TEST 1</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #f59e0b;
+      --primary-dark: #d97706;
+      --primary-light: #fef3c7;
+      --bg: #fffbeb;
+      --border-color: #fde68a;
+      --text-main: #92400e;
+      --correct-color: #15803d;
+      --correct-bg: #dcfce7;
+      --correct-border: #22c55e;
+      --incorrect-color: #dc2626;
+      --incorrect-bg: #fee2e2;
+      --incorrect-border: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      touch-action: manipulation;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: #1e293b;
+      transition: background-color 0.3s ease;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Sticky Top Navigation for 10 Tests */
+    .top-nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--border-color);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .test-tab {
+      position: relative;
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 2px solid #e2e8f0;
+      background: #f8fafc;
+      color: #475569;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .test-tab:hover {
+      border-color: var(--primary);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .test-tab.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary-dark);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .score-badge {
+      font-size: 0.72rem;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #dcfce7;
+      color: #166534;
+      font-weight: 800;
+    }
+
+    .test-tab.active .score-badge {
+      background: #ffffff;
+      color: var(--primary-dark);
+    }
+
+    .main-container {
+      max-width: 900px;
+      margin: 20px auto 40px auto;
+      background: #ffffff;
+      padding: 28px 20px;
+      border-radius: 22px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07);
+      border: 2px solid var(--border-color);
+      transition: border-color 0.3s ease;
+    }
+
+    .section-title {
+      background: linear-gradient(90deg, var(--primary-light) 0%, #ffffff 100%);
+      color: var(--text-main);
+      padding: 12px 16px;
+      border-radius: 12px;
+      margin: 28px 0 16px 0;
+      font-size: 1.15rem;
+      font-weight: 800;
+      border-left: 6px solid var(--primary);
+    }
+
+    .part-title {
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 18px 0 10px 0;
+      font-size: 1rem;
+    }
+
+    .question-card {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      border: 1.5px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s ease;
+    }
+
+    .word-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      background: var(--primary-light);
+      padding: 14px;
+      border-radius: 12px;
+      border: 2px dashed var(--primary);
+      margin-bottom: 16px;
+      min-height: 52px;
+    }
+
+    .word-item {
+      background: #ffffff;
+      border: 1.5px solid var(--primary);
+      padding: 6px 14px;
+      border-radius: 18px;
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 0.92rem;
+      user-select: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .word-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .drop-zone {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 110px;
+      min-height: 36px;
+      border-bottom: 2.5px solid var(--primary);
+      background: var(--primary-light);
+      vertical-align: middle;
+      text-align: center;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 2px 5px;
+      border-radius: 8px;
+      padding: 2px 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .drop-zone:hover {
+      filter: brightness(0.97);
+    }
+
+    .reading-box {
+      background: var(--primary-light);
+      padding: 18px;
+      border-radius: 14px;
+      border: 1.5px solid var(--border-color);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #1e293b;
+    }
+
+    .tf-options, .mcq-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tf-btn, .mcq-btn {
+      padding: 8px 18px;
+      border: 2px solid #cbd5e1;
+      background: #f8fafc;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      color: #475569;
+      transition: all 0.2s;
+      font-size: 0.92rem;
+    }
+
+    .tf-btn:hover, .mcq-btn:hover {
+      border-color: var(--primary);
+    }
+
+    .tf-btn.selected, .mcq-btn.selected {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary-dark);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    select.matching-select {
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1.5px solid var(--primary);
+      background: var(--primary-light);
+      font-weight: 600;
+      color: var(--text-main);
+      outline: none;
+      width: 100%;
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+
+    .reorder-zone {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      background: #f8fafc;
+      padding: 12px;
+      border-radius: 10px;
+      min-height: 50px;
+      border: 2px dashed var(--primary);
+      margin-top: 8px;
+    }
+
+    .reorder-word {
+      background: var(--primary-light);
+      border: 1.5px solid var(--primary);
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text-main);
+      user-select: none;
+      font-size: 0.9rem;
+      transition: all 0.15s;
+    }
+
+    .reorder-word:hover {
+      transform: scale(1.03);
+    }
+
+    input[type="text"].fill-input {
+      padding: 6px 12px;
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      outline: none;
+      font-size: 0.95rem;
+      width: 170px;
+      background: var(--primary-light);
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 2px 4px;
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      font-size: 1.15rem;
+      font-weight: 800;
+      padding: 16px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      margin-top: 30px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+      transition: transform 0.2s, filter 0.2s;
+    }
+
+    .btn-submit:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    .question-card.is-correct {
+      border: 2px solid var(--correct-border) !important;
+      background-color: var(--correct-bg) !important;
+    }
+
+    .question-card.is-incorrect {
+      border: 2px solid var(--incorrect-border) !important;
+      background-color: var(--incorrect-bg) !important;
+    }
+
+    .status-tag {
+      font-weight: 700;
+      margin-top: 8px;
+      display: block;
+      font-size: 0.92rem;
+    }
+
+    .status-correct { color: var(--correct-color); }
+    .status-incorrect { color: var(--incorrect-color); }
+
+    .explanation-box {
+      display: none;
+      background: #ffffff;
+      border-left: 4px solid var(--primary);
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #1e293b;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .result-box {
+      display: none;
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 2px solid #22c55e;
+      border-radius: 18px;
+      padding: 24px 18px;
+      margin-top: 30px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(34, 197, 94, 0.15);
+    }
+
+    .quote-box {
+      background: #ffffff;
+      border: 2px dashed #4ade80;
+      padding: 16px;
+      margin-top: 18px;
+      color: #14532d;
+      font-weight: 700;
+      border-radius: 12px;
+      text-align: center;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVIGATION BAR FOR 10 TESTS -->
+  <div class="top-nav-wrapper">
+    <div class="max-w-5xl mx-auto px-3 py-3">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-amber-500 text-white font-extrabold text-sm shadow">A2.1</span>
+          <span class="font-extrabold text-slate-800 text-sm sm:text-base">HỆ THỐNG LUYỆN THI 10 ĐỀ PROGRESS TEST 1</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span id="overallProgress" class="text-xs font-bold px-3 py-1.5 rounded-full bg-slate-100 text-slate-700">Đã hoàn thành: 0/10 đề</span>
+          <button type="button" onclick="resetCurrentTest()" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-red-50 text-red-600 border border-red-200 hover:bg-red-100 transition">
+            Làm lại đề này
+          </button>
+        </div>
+      </div>
+      <!-- 10 Test Switcher Buttons -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-1" id="testTabsContainer"></div>
+    </div>
+  </div>
+
+  <!-- MAIN QUIZ CONTAINER -->
+  <div class="px-3">
+    <div class="main-container">
+      <header class="text-center pb-4 mb-5 border-b-2 border-dashed" style="border-color: var(--border-color);">
+        <div class="inline-block text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full mb-2" style="background: var(--primary-light); color: var(--text-main);" id="testBadge">
+          ĐỀ SỐ 1 / 10
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight" style="color: var(--text-main);" id="testTitle">
+          A2.1 – PROGRESS TEST PRACTICE 1
+        </h1>
+        <h2 class="text-xs sm:text-sm font-bold uppercase tracking-wide mt-1 opacity-80" style="color: var(--primary-dark);" id="testSubtitle">
+          THE USE OF LANGUAGE: VOCABULARY AND GRAMMAR
+        </h2>
+      </header>
+
+      <!-- Student Info Bar -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-xl mb-6" style="background: var(--primary-light); border: 1px solid var(--border-color);">
+        <div class="flex items-center gap-2">
+          <label class="font-bold text-xs sm:text-sm whitespace-nowrap" style="color: var(--text-main);">Name:</label>
+          <input type="text" id="studentName" placeholder="Họ và tên..." class="w-full px-3 py-1.5 rounded-lg border bg-white text-sm outline-none">
+        </div>
+        <div class="flex items-center gap-2">
+          <label class="font-bold text-xs sm:text-sm whitespace-nowrap" style="color: var(--text-main);">Class:</label>
+          <input type="text" id="studentClass" placeholder="Lớp học..." class="w-full px-3 py-1.5 rounded-lg border bg-white text-sm outline-none">
+        </div>
+        <div class="flex items-center gap-2">
+          <label class="font-bold text-xs sm:text-sm whitespace-nowrap" style="color: var(--text-main);">Student ID:</label>
+          <input type="text" id="studentID" placeholder="Mã số SV..." class="w-full px-3 py-1.5 rounded-lg border bg-white text-sm outline-none">
+        </div>
+      </div>
+
+      <!-- QUIZ CONTENT DYNAMICALLY RENDERED -->
+      <div id="quizBody"></div>
+
+      <button type="button" class="btn-submit" onclick="gradeCurrentTest()">
+        SUBMIT (NỘP BÀI & CHẤM ĐIỂM ĐỀ NÀY)
+      </button>
+
+      <!-- RESULT BOX -->
+      <div class="result-box" id="resultBox">
+        <h2 class="text-xl font-extrabold text-green-800 mb-3" id="resultHeader">KẾT QUẢ BÀI LÀM</h2>
+        <div class="text-lg font-extrabold text-green-900 my-1" id="scoreA">Section A (Vocabulary): ... / 5.0</div>
+        <div class="text-lg font-extrabold text-green-900 my-1" id="scoreB">Section B (Grammar): ... / 5.0</div>
+        <div class="text-2xl font-black text-emerald-700 mt-3 pt-2 border-t border-green-300" id="scoreTotal">TỔNG ĐIỂM: ... / 10.0</div>
+
+        <div class="quote-box">
+          <span class="block text-sm text-green-700 mb-1">Thầy tặng các bạn một câu:</span>
+          <span class="block italic text-base text-green-900">
+            "Gió đưa cành trúc la đà<br>
+            Không học nghiêm túc, mất bà hai triệu tư"
+          </span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 mt-4">
+          <button type="button" id="explainBtn" onclick="toggleExplanation()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl shadow transition">
+            Hiện Dịch và Giải thích đáp án
+          </button>
+          <button type="button" onclick="goToNextTest()" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-4 rounded-xl shadow transition">
+            Chuyển sang Đề tiếp theo ➔
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+// ============================================================================
+// COLOUR THEMES FOR EACH OF THE 10 TESTS
+// ============================================================================
+const themes = [
+  { name: "Đề 1", primary: "#f59e0b", dark: "#d97706", light: "#fef3c7", bg: "#fffbeb", border: "#fde68a", text: "#92400e" }, // Amber
+  { name: "Đề 2", primary: "#2563eb", dark: "#1d4ed8", light: "#eff6ff", bg: "#f8fafc", border: "#bfdbfe", text: "#1e40af" }, // Blue
+  { name: "Đề 3", primary: "#16a34a", dark: "#15803d", light: "#f0fdf4", bg: "#f4fbf7", border: "#bbf7d0", text: "#166534" }, // Emerald
+  { name: "Đề 4", primary: "#ec4899", dark: "#db2777", light: "#fdf2f8", bg: "#fef7f9", border: "#fbcfe8", text: "#be185d" }, // Pink
+  { name: "Đề 5", primary: "#f97316", dark: "#ea580c", light: "#fff7ed", bg: "#fffbf5", border: "#fed7aa", text: "#c2410c" }, // Orange
+  { name: "Đề 6", primary: "#f43f5e", dark: "#e11d48", light: "#fff1f2", bg: "#fff5f5", border: "#fecdd3", text: "#be123c" }, // Rose
+  { name: "Đề 7", primary: "#4f46e5", dark: "#4338ca", light: "#eef2ff", bg: "#f5f7ff", border: "#c7d2fe", text: "#3730a3" }, // Indigo
+  { name: "Đề 8", primary: "#0d9488", dark: "#0f766e", light: "#f0fdfa", bg: "#f4fbf9", border: "#99f6e4", text: "#115e59" }, // Teal
+  { name: "Đề 9", primary: "#9333ea", dark: "#7e22ce", light: "#faf5ff", bg: "#fcf9ff", border: "#e9d5ff", text: "#6b21a8" }, // Purple
+  { name: "Đề 10", primary: "#0284c7", dark: "#0369a1", light: "#f0f9ff", bg: "#f5fbff", border: "#bae6fd", text: "#075985" } // Sky
+];
+
+// ============================================================================
+// DATABASE OF ALL 10 TESTS (40 QUESTIONS EACH = 400 QUESTIONS TOTAL)
+// ============================================================================
+const allTests = [
+  // --------------------------------------------------------------------------
+  // TEST 1 (From Practice 1)
+  // --------------------------------------------------------------------------
+  {
+    id: 1,
+    title: "PROGRESS TEST 1 – PRACTICE 1",
+    wordBank: ["timetable", "break", "notes", "mark", "hard", "studies", "exams", "term"],
+    vocabFill: [
+      { q: "1. At our school the summer _____ is 12 weeks long.", ans: "term", exp: "Dịch: Ở trường chúng tôi, học kỳ hè kéo dài 12 tuần. (term = học kỳ)" },
+      { q: "2. I hate _____ because I’m not very good at them.", ans: "exams", exp: "Dịch: Tôi ghét các kỳ thi vì tôi không giỏi làm bài kiểm tra. (exams = các kỳ thi)" },
+      { q: "3. Un-ho has a new _____ for his English course. He has classes on Mondays, Wednesdays and Fridays from 11:30 to 1:00.", ans: "timetable", exp: "Dịch: Un-ho có thời khóa biểu mới cho khóa học tiếng Anh. (timetable = thời khóa biểu)" },
+      { q: "4. Sofia always gets a good _____ in her maths tests. She’s brilliant at maths!", ans: "mark", exp: "Dịch: Sofia luôn đạt điểm cao trong bài kiểm tra toán. (get a good mark = đạt điểm tốt)" },
+      { q: "5. It’s important to take _____ in your notebook when you are in your English lessons.", ans: "notes", exp: "Dịch: Việc ghi chú vào vở trong giờ học tiếng Anh là rất quan trọng. (take notes = ghi chép bài)" },
+      { q: "6. The computer class is from 9:30 to 12:30, but we usually have a _____ at 11 o’clock.", ans: "break", exp: "Dịch: Lớp học tin học từ 9:30 đến 12:30, nhưng chúng tôi thường nghỉ giải lao lúc 11 giờ. (have a break = nghỉ giải lao)" },
+      { q: "7. Your computer _____ are very important.", ans: "studies", exp: "Dịch: Việc học máy tính của bạn rất quan trọng. (studies = việc học)" }
+    ],
+    readingTitle: "IRENE’S STORY",
+    readingText: `I’m a cleaner. I love my job. I’m sure you’re surprised to hear that. You probably don’t know anyone who wants to become a cleaner!<br><br>So why do I love my job? Well, first, I start work at 6 o’clock. When I walk to work, the streets are quiet and I can hear the birds sing. You don’t usually hear the birds in the middle of the city.<br><br>The second thing is, I work in a hospital. It’s hard work, but I know that what I do is really useful, and that makes me happy. Also, the nurses are friendly, and I chat with them when I have time.<br><br>But I don’t want to be a cleaner all my life. I really want to be an engineer. I go to college in the evenings to study.<br><br>That’s why the third reason is the really important one. I finish work at lunch time! So when everyone else goes back to work after their lunch break, I have time for my studies.`,
+    tfQuestions: [
+      { q: "8. Irene thinks that most people want to be a cleaner.", ans: "False", exp: "Dịch: Irene nghĩ hầu hết mọi người muốn làm nhân viên vệ sinh. -> Sai ('You probably don't know anyone who wants to become a cleaner!')." },
+      { q: "9. Irene likes to hear the birds.", ans: "True", exp: "Dịch: Irene thích nghe tiếng chim hót. -> Đúng ('I can hear the birds sing')." },
+      { q: "10. She doesn’t do very much at work.", ans: "False", exp: "Dịch: Cô ấy không phải làm việc nhiều. -> Sai ('It's hard work')." },
+      { q: "11. She talks to the nurses in the hospital.", ans: "True", exp: "Dịch: Cô ấy trò chuyện với các y tá trong bệnh viện. -> Đúng ('the nurses are friendly, and I chat with them')." },
+      { q: "12. She wants to be a doctor.", ans: "False", exp: "Dịch: Cô ấy muốn trở thành bác sĩ. -> Sai ('I really want to be an engineer')." },
+      { q: "13. She studies at the college.", ans: "True", exp: "Dịch: Cô ấy học tại trường cao đẳng. -> Đúng ('I go to college in the evenings to study')." },
+      { q: "14. She doesn’t have time for her studies.", ans: "False", exp: "Dịch: Cô ấy không có thời gian cho việc học. -> Sai ('I have time for my studies')." }
+    ],
+    matchOptions: [
+      { val: "a", text: "a. Of course, small or large?" },
+      { val: "b", text: "b. Sure. Is it in the car park?" },
+      { val: "c", text: "c. Sorry, we are not at home." },
+      { val: "d", text: "d. Sorry, I’ve got a meeting at 4 o’clock." },
+      { val: "e", text: "e. Sure, no problem. Call me around 10 o’clock." },
+      { val: "f", text: "f. You’re welcome." }
+    ],
+    matchQuestions: [
+      { q: "15. Could I come to your place tonight?", ans: "c", exp: "c. Sorry, we are not at home. (Xin lỗi, tối nay chúng tôi không có ở nhà.)" },
+      { q: "16. Can I phone you tomorrow?", ans: "e", exp: "e. Sure, no problem. Call me around 10 o’clock. (Chắc chắn rồi. Gọi tôi khoảng 10 giờ nhé.)" },
+      { q: "17. I’d like some help with my car.", ans: "b", exp: "b. Sure. Is it in the car park? (Tất nhiên. Nó ở trong bãi đỗ xe à?)" },
+      { q: "18. Can I have a hot chocolate, please?", ans: "a", exp: "a. Of course, small or large? (Tất nhiên rồi, cỡ nhỏ hay lớn?)" },
+      { q: "19. Could we meet at 4:15?", ans: "d", exp: "d. Sorry, I’ve got a meeting at 4 o’clock. (Xin lỗi, tôi có cuộc họp lúc 4 giờ.)" },
+      { q: "20. Thanks for your help.", ans: "f", exp: "f. You’re welcome. (Không có gì.)" }
+    ],
+    mcqQuestions: [
+      { q: "21. My father works in a bank, but he __________ like his job.", opts: ["A. doesn’t", "B. isn’t", "C. don’t"], ans: "A. doesn’t", exp: "Chủ ngữ số ít 'he' + động từ thường 'like' -> dùng trợ động từ phủ định 'doesn’t'." },
+      { q: "22. What __________ ?", opts: ["A. their names are", "B. is their names", "C. are their names"], ans: "C. are their names", exp: "Câu hỏi với to be và danh từ số nhiều 'their names' -> 'What are their names?'." },
+      { q: "23. I __________ my car to the office – I go by bus.", opts: ["A. drive", "B. don’t drive", "C. doesn’t drive"], ans: "B. don’t drive", exp: "Chủ ngữ 'I' dùng phủ định 'don’t drive' (tôi không lái xe vì đi bằng xe buýt)." },
+      { q: "24. “Do you like your new job?” – “Yes, __________.”", opts: ["A. I do", "B. I like", "C. I does"], ans: "A. I do", exp: "Câu hỏi 'Do you...?' trả lời ngắn khẳng định là 'Yes, I do'." },
+      { q: "25. Larry is a good businessman, but __________ a lot of money?", opts: ["A. does he make", "B. he makes", "C. make"], ans: "A. does he make", exp: "Câu hỏi hiện tại đơn với chủ ngữ 'he': 'does he make...?'." },
+      { q: "26. __________ important exams at school this year?", opts: ["A. Does he have", "B. Do he have", "C. Has he"], ans: "A. Does he have", exp: "Chủ ngữ 'he' dùng trợ động từ 'Does' + V nguyên mẫu 'have'." },
+      { q: "27. “Does Azra study on Sundays?” – “No, she __________.”", opts: ["A. no studies", "B. doesn’t", "C. don’t"], ans: "B. doesn’t", exp: "Trả lời phủ định ngắn cho 'Does she...?' là 'No, she doesn’t'." },
+      { q: "28. How many hours a week __________ English?", opts: ["A. study you", "B. you study", "C. do you study"], ans: "C. do you study", exp: "Cấu trúc câu hỏi: Từ để hỏi + do + you + V nguyên thể (study)?" },
+      { q: "29. __________ to podcasts while you study?", opts: ["A. Listen you", "B. Do you listen", "C. You listen"], ans: "B. Do you listen", exp: "Câu hỏi Yes/No thì hiện tại đơn: 'Do you listen...?'." },
+      { q: "30. Tourists __________ to look at the alligators.", opts: ["A. come", "B. comes", "C. are come"], ans: "A. come", exp: "Chủ ngữ số nhiều 'Tourists' đi với động từ nguyên thể 'come'." }
+    ],
+    reorderQuestions: [
+      { q: "31.", words: ["you", "in your free time", "do", "what", "do", "?"], ans: "what do you do in your free time?", exp: "Dịch: Bạn làm gì vào thời gian rảnh?" },
+      { q: "32.", words: ["you", "study", "do", "for your exams", "late at night", "?"], ans: "do you study for your exams late at night?", exp: "Dịch: Bạn có học ôn thi vào đêm muộn không?" },
+      { q: "33.", words: ["at the end", "exams", "have", "do", "of this year", "they", "important", "?"], ans: "do they have important exams at the end of this year?", exp: "Dịch: Họ có các kỳ thi quan trọng vào cuối năm nay không?" },
+      { q: "34.", words: ["to", "go", "how many days a week", "she", "does", "university", "?"], ans: "how many days a week does she go to university?", exp: "Dịch: Cô ấy đi học đại học mấy ngày một tuần?" },
+      { q: "35.", words: ["class", "the", "time’s", "next", "what", "?"], ans: "what time’s the next class?", exp: "Dịch: Mấy giờ thì đến tiết học tiếp theo?" }
+    ],
+    verbQuestions: [
+      { q: "36. They live in Brazil, but they _____ (be) from Spain.", ans: ["are"], exp: "Chủ ngữ số nhiều 'they' -> chia to be là 'are'." },
+      { q: "37. We’re always really busy, so we _____ (not have) time to go to the supermarket during the week.", ans: ["don't have", "don’t have", "do not have"], exp: "Phủ định hiện tại đơn với 'we' -> 'don't have'." },
+      { q: "38. Jake studies hard in the morning, so he _____ (relax) for half an hour after lunch.", ans: ["relaxes"], exp: "Chủ ngữ số ít 'he', động từ tận cùng bằng -x thêm -es -> 'relaxes'." },
+      { q: "39. Joe’s not very interested in sport, so he _____ (not watch) football matches on TV.", ans: ["doesn't watch", "doesn’t watch", "does not watch"], exp: "Phủ định hiện tại đơn với 'he' -> 'doesn't watch'." },
+      { q: "40. _____ your sister _____ (go) to college in the evenings?", isSplit: true, part1: "40.", mid: "your sister", part2: "(go) to college in the evenings?", ans1: "does", ans2: "go", exp: "Câu hỏi hiện tại đơn với chủ ngữ số ít 'your sister': Does + S + go?" }
+    ]
+  },
+
+  // --------------------------------------------------------------------------
+  // TEST 2 (From Practice 2)
+  // --------------------------------------------------------------------------
+  {
+    id: 2,
+    title: "PROGRESS TEST 1 – PRACTICE 2",
+    wordBank: ["Brazilian", "timetable", "nurse", "friendly", "term", "notes", "exams", "pilot"],
+    vocabFill: [
+      { q: "1. Marta is from Brazil. She is _____.", ans: "Brazilian", exp: "Dịch: Marta đến từ Brazil. Cô ấy là người Brazil. (Brazilian)" },
+      { q: "2. Please check your _____ because our English class is in Room 204 today.", ans: "timetable", exp: "Dịch: Hãy kiểm tra thời khóa biểu vì lớp tiếng Anh ở phòng 204 hôm nay. (timetable)" },
+      { q: "3. My aunt works in a hospital and looks after sick people. She is a _____.", ans: "nurse", exp: "Dịch: Dì tôi làm ở bệnh viện và chăm sóc người bệnh. Cô ấy là y tá. (nurse)" },
+      { q: "4. Our new classmate is very _____. She smiles and talks to everyone.", ans: "friendly", exp: "Dịch: Bạn cùng lớp mới rất thân thiện. Cô ấy mỉm cười và nói chuyện với mọi người. (friendly)" },
+      { q: "5. The autumn _____ begins in September and finishes before Christmas.", ans: "term", exp: "Dịch: Học kỳ mùa thu bắt đầu vào tháng 9 và kết thúc trước Giáng sinh. (term)" },
+      { q: "6. I always take _____ when the teacher explains new vocabulary.", ans: "notes", exp: "Dịch: Tôi luôn ghi chép khi giáo viên giảng từ vựng mới. (take notes)" },
+      { q: "7. We have two English _____ next week, so I need to study tonight.", ans: "exams", exp: "Dịch: Chúng tôi có hai bài thi tiếng Anh vào tuần tới. (exams)" }
+    ],
+    readingTitle: "A JOB AND A PLAN FOR THE FUTURE",
+    readingText: `My name is Lucas, and I’m nineteen years old. I’m from Brazil, so I’m Brazilian, but I now live in a small city in Canada with my uncle. I work part-time as a shop assistant in a sports shop near the bus station. I like speaking to customers because many of them are interested in football and travel. Saturdays are usually very busy, but my manager says I’m friendly and hard-working.<br><br>I’m also a student at a local college. My classes are on Monday, Tuesday and Thursday mornings, and I work in the afternoons on two of those days. I use a timetable to organise my week. Before each lesson, I read my notes from the previous class, and I try to learn five new words. English grammar is sometimes difficult for me, so I ask my teacher questions when I don’t understand something.<br><br>In the future, I want to become a pilot. I know that it takes a lot of study and practice, and I need to improve my English before I can apply for training. My uncle thinks I should work full-time at the shop, but he supports my plan. At weekends, I sometimes visit friends, although I usually spend Sunday evening preparing for college. I’m busy, but I’m happy because I’m working towards something important to me.`,
+    tfQuestions: [
+      { q: "8. Lucas is Brazilian, but he lives in Canada now.", ans: "True", exp: "Dịch: Lucas là người Brazil nhưng hiện sống ở Canada. -> Đúng ('I’m from Brazil... I now live in a small city in Canada')." },
+      { q: "9. He works full-time in a sports shop.", ans: "False", exp: "Dịch: Anh ấy làm toàn thời gian ở cửa hàng thể thao. -> Sai ('I work part-time as a shop assistant')." },
+      { q: "10. The shop is often busy on Saturdays.", ans: "True", exp: "Dịch: Cửa hàng thường đông khách vào thứ Bảy. -> Đúng ('Saturdays are usually very busy')." },
+      { q: "11. Lucas has college classes on Friday mornings.", ans: "False", exp: "Dịch: Lucas có lớp vào sáng thứ Sáu. -> Sai ('My classes are on Monday, Tuesday and Thursday mornings')." },
+      { q: "12. He reviews his notes before lessons.", ans: "True", exp: "Dịch: Anh ấy xem lại ghi chú trước giờ học. -> Đúng ('Before each lesson, I read my notes')." },
+      { q: "13. Lucas wants to become a nurse in the future.", ans: "False", exp: "Dịch: Lucas muốn trở thành y tá. -> Sai ('I want to become a pilot')." },
+      { q: "14. He never studies at the weekend.", ans: "False", exp: "Dịch: Anh ấy không bao giờ học vào cuối tuần. -> Sai ('I usually spend Sunday evening preparing for college')." }
+    ],
+    matchOptions: [
+      { val: "a", text: "a. Sure. Where would you like them?" },
+      { val: "b", text: "b. You’re welcome." },
+      { val: "c", text: "c. It’s Nguyen." },
+      { val: "d", text: "d. That’s great news. Well done!" },
+      { val: "e", text: "e. Of course. Small or large?" },
+      { val: "f", text: "f. Sorry, I have a class until five." }
+    ],
+    matchQuestions: [
+      { q: "15. Could you tell me your surname, please?", ans: "c", exp: "c. It’s Nguyen. (Cho tôi biết họ của bạn? -> Là Nguyễn.)" },
+      { q: "16. Can I have a hot chocolate, please?", ans: "e", exp: "e. Of course. Small or large? (Cho tôi một ca cao nóng nhé? -> Tất nhiên, cỡ nhỏ hay lớn?)" },
+      { q: "17. I passed my English exam!", ans: "d", exp: "d. That’s great news. Well done! (Tôi đậu kỳ thi tiếng Anh rồi! -> Tin tuyệt quá, làm tốt lắm!)" },
+      { q: "18. Could we meet at quarter past four?", ans: "f", exp: "f. Sorry, I have a class until five. (Gặp nhau lúc 4h15 được không? -> Xin lỗi, tôi có lớp đến 5 giờ.)" },
+      { q: "19. Can you help me carry these books?", ans: "a", exp: "a. Sure. Where would you like them? (Giúp tôi bê chồng sách này nhé? -> Chắc chắn rồi, bạn muốn để đâu?)" },
+      { q: "20. Thanks for showing me the computer room.", ans: "b", exp: "b. You’re welcome. (Cảm ơn vì đã chỉ phòng máy tính cho tôi. -> Không có gì.)" }
+    ],
+    mcqQuestions: [
+      { q: "21. My neighbours __________ from France; they’re from Belgium.", opts: ["A. don’t", "B. isn’t", "C. aren’t"], ans: "C. aren’t", exp: "Chủ ngữ số nhiều 'My neighbours' đi với to be phủ định 'aren’t'." },
+      { q: "22. I __________ a student, but my brother is a teacher.", opts: ["A. am not", "B. don’t", "C. isn’t"], ans: "A. am not", exp: "Chủ ngữ 'I' đi với to be phủ định 'am not'." },
+      { q: "23. __________ your new classmates friendly?", opts: ["A. Is", "B. Are", "C. Do"], ans: "B. Are", exp: "Tính từ 'friendly' và chủ ngữ số nhiều 'your new classmates' -> dùng to be 'Are'." },
+      { q: "24. “Is Lena a dentist?” “No, __________. She’s a nurse.”", opts: ["A. she isn’t", "B. she doesn’t", "C. she aren’t"], ans: "A. she isn’t", exp: "Câu hỏi 'Is Lena...?' trả lời phủ định là 'No, she isn’t'." },
+      { q: "25. My father __________ to work by bus every morning.", opts: ["A. going", "B. go", "C. goes"], ans: "C. goes", exp: "Chủ ngữ số ít 'My father' ở thì hiện tại đơn -> 'goes'." },
+      { q: "26. We __________ television before college because we leave home early.", opts: ["A. aren’t watch", "B. don’t watch", "C. doesn’t watch"], ans: "B. don’t watch", exp: "Chủ ngữ 'We' dùng phủ định 'don’t watch'." },
+      { q: "27. __________ you take notes during your English lessons?", opts: ["A. Are", "B. Does", "C. Do"], ans: "C. Do", exp: "Chủ ngữ 'you' + động từ thường 'take' -> dùng trợ động từ 'Do'." },
+      { q: "28. Where __________ your cousin work?", opts: ["A. does", "B. do", "C. is"], ans: "A. does", exp: "Chủ ngữ số ít 'your cousin' + động từ nguyên mẫu 'work' -> dùng 'does'." },
+      { q: "29. “Do the students have an exam today?” “Yes, __________.”", opts: ["A. they does", "B. they do", "C. they are"], ans: "B. they do", exp: "Câu hỏi 'Do the students...?' trả lời ngắn 'Yes, they do'." },
+      { q: "30. A pilot __________ an aeroplane and takes passengers to different places.", opts: ["A. flying", "B. fly", "C. flies"], ans: "C. flies", exp: "Chủ ngữ số ít 'A pilot', động từ 'fly' đổi y -> ies thành 'flies'." }
+    ],
+    reorderQuestions: [
+      { q: "31.", words: ["where", "is", "your", "English teacher", "originally", "from", "?"], ans: "where is your english teacher originally from?", exp: "Dịch: Giáo viên tiếng Anh của bạn gốc ở đâu?" },
+      { q: "32.", words: ["my", "colleagues", "at work", "are", "very", "friendly", "."], ans: "my colleagues at work are very friendly.", exp: "Dịch: Các đồng nghiệp ở chỗ làm của tôi rất thân thiện." },
+      { q: "33.", words: ["how many days", "does", "your sister", "study", "at college", "?"], ans: "how many days does your sister study at college?", exp: "Dịch: Chị/em gái của bạn học ở trường cao đẳng mấy ngày?" },
+      { q: "34.", words: ["we", "don’t", "usually", "study", "together", "after dinner", "."], ans: "we don’t usually study together after dinner.", exp: "Dịch: Chúng tôi thường không học cùng nhau sau bữa tối." },
+      { q: "35.", words: ["what time", "do", "your classes", "finish", "on Fridays", "?"], ans: "what time do your classes finish on fridays?", exp: "Dịch: Các lớp học của bạn kết thúc lúc mấy giờ vào thứ Sáu?" }
+    ],
+    verbQuestions: [
+      { q: "36. My cousins _____ (be) from Chile, but they live in Peru now.", ans: ["are"], exp: "Chủ ngữ số nhiều 'My cousins' -> 'are'." },
+      { q: "37. I _____ (not be) very good at maths, but I enjoy English.", ans: ["am not", "'m not", "’m not"], exp: "Chủ ngữ 'I' với to be phủ định -> 'am not'." },
+      { q: "38. Sofia _____ (work) in a hotel near the airport.", ans: ["works"], exp: "Chủ ngữ số ít 'Sofia' -> 'works'." },
+      { q: "39. He _____ (not take) the bus because he walks to college.", ans: ["doesn't take", "doesn’t take", "does not take"], exp: "Phủ định hiện tại đơn với 'He' -> 'doesn't take'." },
+      { q: "40. _____ your mother _____ (teach) at this school?", isSplit: true, part1: "40.", mid: "your mother", part2: "(teach) at this school?", ans1: "does", ans2: "teach", exp: "Câu hỏi hiện tại đơn với chủ ngữ số ít 'your mother': Does + S + teach?" }
+    ]
+  },
+
+  // --------------------------------------------------------------------------
+  // TEST 3 (From Practice 3)
+  // --------------------------------------------------------------------------
+  {
+    id: 3,
+    title: "PROGRESS TEST 1 – PRACTICE 3",
+    wordBank: ["Italian", "engineer", "marks", "break", "hard-working", "studies", "taxi driver", "nationality"],
+    vocabFill: [
+      { q: "1. My parents are from Rome, so they are _____.", ans: "Italian", exp: "Dịch: Bố mẹ tôi đến từ Rome (Ý), vì vậy họ là người Ý. (Italian)" },
+      { q: "2. An _____ designs roads, bridges and buildings.", ans: "engineer", exp: "Dịch: Kỹ sư thiết kế đường xá, cầu cống và các tòa nhà. (engineer)" },
+      { q: "3. Tina gets very good _____ in her English tests.", ans: "marks", exp: "Dịch: Tina đạt điểm số rất cao trong các bài kiểm tra tiếng Anh. (marks)" },
+      { q: "4. We have a short _____ between the two morning lessons.", ans: "break", exp: "Dịch: Chúng tôi có một giờ giải lao ngắn giữa hai tiết học sáng. (break)" },
+      { q: "5. Mr Long is _____. He always finishes his work carefully and on time.", ans: "hard-working", exp: "Dịch: Thầy Long rất chăm chỉ. Thầy luôn hoàn thành công việc cẩn thận và đúng giờ. (hard-working)" },
+      { q: "6. My brother is a _____. He takes people to the airport in his car.", ans: "taxi driver", exp: "Dịch: Anh trai tôi là tài xế taxi. Anh ấy chở mọi người ra sân bay. (taxi driver)" },
+      { q: "7. My cousin _____ business at university three days a week.", ans: "studies", exp: "Dịch: Anh họ tôi học ngành kinh doanh tại đại học 3 ngày một tuần. (studies)" }
+    ],
+    readingTitle: "WORKING WHILE STUDYING",
+    readingText: `My name is Hana, and I’m twenty years old. I’m from South Korea, and I’m Korean. I live with two friends in a flat near my college. On weekdays, I work as a receptionist at a small hotel. I answer the phone, welcome guests and help visitors find places to eat. The hotel is quiet in the morning, but it becomes busy in the afternoon when new guests arrive. My manager says I’m polite and organised.<br><br>I study business at college on Monday, Wednesday and Friday evenings. It isn’t always easy to work and study on the same day, so I plan my time carefully. I write important dates in my timetable and check it every Sunday. I also take notes in class, especially when the teacher explains new words. I sometimes get low marks in grammar tests, but I ask a classmate to practise with me before exams.<br><br>After I finish college, I want to become a hotel manager. I enjoy meeting people from different countries, and I can speak Korean and English. I’m learning Italian because I want to speak to tourists when they visit the city in summer. At the weekend, I usually do the shopping and clean the flat. I don’t have a lot of free time, but I feel proud when I finish a difficult week. My friends say I’m hard-working, and I hope my studies will help me get a better job.`,
+    tfQuestions: [
+      { q: "8. Hana is from South Korea.", ans: "True", exp: "Dịch: Hana đến từ Hàn Quốc. -> Đúng ('I’m from South Korea')." },
+      { q: "9. She works as a receptionist at a hotel.", ans: "True", exp: "Dịch: Cô ấy làm lễ tân tại một khách sạn. -> Đúng ('I work as a receptionist at a small hotel')." },
+      { q: "10. The hotel is busiest early in the morning.", ans: "False", exp: "Dịch: Khách sạn đông khách nhất vào sáng sớm. -> Sai ('The hotel is quiet in the morning, but it becomes busy in the afternoon')." },
+      { q: "11. Hana studies business on three evenings each week.", ans: "True", exp: "Dịch: Hana học kinh doanh 3 buổi tối mỗi tuần. -> Đúng ('on Monday, Wednesday and Friday evenings')." },
+      { q: "12. She never checks her timetable.", ans: "False", exp: "Dịch: Cô ấy không bao giờ kiểm tra thời khóa biểu. -> Sai ('check it every Sunday')." },
+      { q: "13. She is learning Italian because she wants to speak to tourists.", ans: "True", exp: "Dịch: Cô ấy đang học tiếng Ý vì muốn nói chuyện với du khách. -> Đúng ('learning Italian because I want to speak to tourists')." },
+      { q: "14. Hana has lots of free time during the week.", ans: "False", exp: "Dịch: Hana có rất nhiều thời gian rảnh. -> Sai ('I don’t have a lot of free time')." }
+    ],
+    matchOptions: [
+      { val: "a", text: "a. Of course. Let’s look at it together." },
+      { val: "b", text: "b. Really? That sounds exciting!" },
+      { val: "c", text: "c. Go straight on and turn left at the bank." },
+      { val: "d", text: "d. No problem. I only arrived a minute ago." },
+      { val: "e", text: "e. Certainly. Would you like sugar, too?" },
+      { val: "f", text: "f. I’m sorry, I finish work at half past six." }
+    ],
+    matchQuestions: [
+      { q: "15. Could you tell me how to get to the station?", ans: "c", exp: "c. Go straight on and turn left at the bank. (Chỉ đường tới nhà ga -> Đi thẳng và rẽ trái ở ngân hàng.)" },
+      { q: "16. Can I have a coffee with milk, please?", ans: "e", exp: "e. Certainly. Would you like sugar, too? (Cho tôi cà phê sữa -> Chắc chắn rồi, bạn có muốn thêm đường không?)" },
+      { q: "17. I’ve got a new job at the airport.", ans: "b", exp: "b. Really? That sounds exciting! (Tôi mới có việc ở sân bay -> Thật sao? Nghe thú vị quá!)" },
+      { q: "18. Can we start the meeting at six?", ans: "f", exp: "f. I’m sorry, I finish work at half past six. (Bắt đầu họp lúc 6h được không? -> Xin lỗi, 6h30 tôi mới tan làm.)" },
+      { q: "19. Could you check this answer for me?", ans: "a", exp: "a. Of course. Let’s look at it together. (Kiểm tra giúp tôi câu trả lời này nhé? -> Tất nhiên, cùng xem nào.)" },
+      { q: "20. Thank you for waiting for me.", ans: "d", exp: "d. No problem. I only arrived a minute ago. (Cảm ơn vì đã đợi tôi -> Không sao, tôi cũng mới tới thôi.)" }
+    ],
+    mcqQuestions: [
+      { q: "21. My friend __________ from Spain; she’s from Portugal.", opts: ["A. doesn’t", "B. isn’t", "C. aren’t"], ans: "B. isn’t", exp: "Chủ ngữ số ít 'My friend' đi với to be phủ định 'isn’t'." },
+      { q: "22. They __________ at home today because they have classes.", opts: ["A. isn’t", "B. don’t be", "C. aren’t"], ans: "C. aren’t", exp: "Chủ ngữ số nhiều 'They' đi với to be phủ định 'aren’t'." },
+      { q: "23. __________ Mark and Peter your new classmates?", opts: ["A. Are", "B. Do", "C. Is"], ans: "A. Are", exp: "Chủ ngữ số nhiều 'Mark and Peter' dùng động từ to be 'Are'." },
+      { q: "24. “Are you from Thailand?” “No, __________.”", opts: ["A. I don’t", "B. I aren’t", "C. I’m not"], ans: "C. I’m not", exp: "Câu hỏi 'Are you...?' trả lời phủ định là 'No, I’m not'." },
+      { q: "25. My aunt __________ as a dentist in a large clinic.", opts: ["A. work", "B. works", "C. working"], ans: "B. works", exp: "Chủ ngữ số ít 'My aunt' -> động từ thêm -s ('works')." },
+      { q: "26. Sam __________ like working at night.", opts: ["A. doesn’t", "B. isn’t", "C. don’t"], ans: "A. doesn’t", exp: "Chủ ngữ số ít 'Sam' + động từ thường 'like' -> dùng 'doesn’t'." },
+      { q: "27. How often __________ your teacher give you homework?", opts: ["A. do", "B. does", "C. is"], ans: "B. does", exp: "Chủ ngữ số ít 'your teacher' + V nguyên thể 'give' -> dùng trợ động từ 'does'." },
+      { q: "28. What time __________ the first lesson start?", opts: ["A. is", "B. do", "C. does"], ans: "C. does", exp: "Chủ ngữ số ít 'the first lesson' + V nguyên thể 'start' -> dùng 'does'." },
+      { q: "29. “Do you and your sister study together?” “Yes, __________.”", opts: ["A. we do", "B. we does", "C. we are"], ans: "A. we do", exp: "Câu hỏi 'Do you and your sister...?' trả lời là 'Yes, we do'." },
+      { q: "30. Shop assistants __________ customers find what they need.", opts: ["A. helping", "B. helps", "C. help"], ans: "C. help", exp: "Chủ ngữ số nhiều 'Shop assistants' -> động từ nguyên thể 'help'." }
+    ],
+    reorderQuestions: [
+      { q: "31.", words: ["what", "nationality", "are", "your", "new classmates", "?"], ans: "what nationality are your new classmates?", exp: "Dịch: Các bạn cùng lớp mới của bạn mang quốc tịch gì?" },
+      { q: "32.", words: ["my brother", "doesn’t", "usually", "work", "in the evening", "."], ans: "my brother doesn’t usually work in the evening.", exp: "Dịch: Anh/em trai tôi thường không làm việc vào buổi tối." },
+      { q: "33.", words: ["how often", "do", "you", "have", "English exams", "?"], ans: "how often do you have english exams?", exp: "Dịch: Bao lâu thì bạn có bài kiểm tra tiếng Anh một lần?" },
+      { q: "34.", words: ["where", "do", "your parents", "live", "at the moment", "?"], ans: "where do your parents live at the moment?", exp: "Dịch: Hiện tại bố mẹ bạn đang sống ở đâu?" },
+      { q: "35.", words: ["she", "studies", "at the college", "three days a week", "."], ans: "she studies at the college three days a week.", exp: "Dịch: Cô ấy học ở trường cao đẳng 3 ngày một tuần." }
+    ],
+    verbQuestions: [
+      { q: "36. My classmates _____ (be) very helpful when I have a problem.", ans: ["are"], exp: "Chủ ngữ số nhiều 'My classmates' -> 'are'." },
+      { q: "37. He _____ (not be) from Italy; he is from Greece.", ans: ["is not", "isn't", "isn’t"], exp: "Chủ ngữ 'He' với to be phủ định -> 'isn't' / 'is not'." },
+      { q: "38. The shop _____ (close) at nine o’clock every evening.", ans: ["closes"], exp: "Chủ ngữ số ít 'The shop' -> 'closes'." },
+      { q: "39. We _____ (not have) lessons on Sunday.", ans: ["don't have", "don’t have", "do not have"], exp: "Phủ định hiện tại đơn với 'We' -> 'don't have'." },
+      { q: "40. _____ your brother _____ (drive) to work every day?", isSplit: true, part1: "40.", mid: "your brother", part2: "(drive) to work every day?", ans1: "does", ans2: "drive", exp: "Câu hỏi hiện tại đơn với chủ ngữ số ít 'your brother': Does + S + drive?" }
+    ]
+  },
+
+  // --------------------------------------------------------------------------
+  // TEST 4 (From Practice 4)
+  // --------------------------------------------------------------------------
+  {
+    id: 4,
+    title: "PROGRESS TEST 1 – PRACTICE 4",
+    wordBank: ["Spanish", "photographer", "kind", "exam", "notes", "police officer", "timetable", "nationality"],
+    vocabFill: [
+      { q: "1. My friend is from Madrid, so he is _____.", ans: "Spanish", exp: "Dịch: Bạn tôi đến từ Madrid (Tây Ban Nha), nên anh ấy là người Tây Ban Nha. (Spanish)" },
+      { q: "2. A _____ takes pictures at weddings and other events.", ans: "photographer", exp: "Dịch: Nhiếp ảnh gia chụp ảnh tại đám cưới và các sự kiện khác. (photographer)" },
+      { q: "3. Our teacher is patient and helpful. She is very _____.", ans: "kind", exp: "Dịch: Giáo viên của chúng tôi kiên nhẫn và hay giúp đỡ. Cô ấy rất tốt bụng. (kind)" },
+      { q: "4. I have a science _____ on Thursday morning.", ans: "exam", exp: "Dịch: Tôi có một bài thi môn khoa học vào sáng thứ Năm. (exam)" },
+      { q: "5. Write the new words in your _____ so you can review them later.", ans: "notes", exp: "Dịch: Hãy viết từ mới vào vở ghi chép để ôn lại sau. (notes)" },
+      { q: "6. A _____ helps keep people safe and makes sure people follow the law.", ans: "police officer", exp: "Dịch: Cảnh sát giúp giữ an toàn và đảm bảo mọi người tuân thủ pháp luật. (police officer)" },
+      { q: "7. I need to check the _____ to see which room our next class is in.", ans: "timetable", exp: "Dịch: Tôi cần kiểm tra thời khóa biểu để xem tiết tiếp theo học ở phòng nào. (timetable)" }
+    ],
+    readingTitle: "A NEW CITY AND A NEW ROUTINE",
+    readingText: `My name is Diego. I’m from Spain, and I’m Spanish. Last year, I moved to Manchester to study photography at college. At first, I didn’t know many people, but now I have a good group of friends. I work two afternoons a week in a small photo shop. I help customers choose frames, organise pictures and sometimes take photographs for the shop’s website. My manager is kind, and he explains my tasks when I’m not sure what to do.<br><br>My college timetable is quite full. I have lessons every weekday morning, and on Tuesday and Thursday afternoons I work at the shop. I usually review my notes after dinner because I have an exam at the end of each term. Photography is my favourite subject, but English is important too. I can talk to customers quite well, although I sometimes make mistakes when I write emails. My teacher says I should read more and practise writing a little every day.<br><br>I share a house with two students from Poland and one student from Vietnam. We take turns cooking dinner, and we often help each other with homework. At weekends, we visit museums or take pictures in the city centre. I miss my family, but I speak to them online every Sunday. After college, I hope to become a professional photographer and work for a travel magazine.`,
+    tfQuestions: [
+      { q: "8. Diego moved to Manchester last year.", ans: "True", exp: "Dịch: Diego chuyển đến Manchester vào năm ngoái. -> Đúng ('Last year, I moved to Manchester')." },
+      { q: "9. He studies engineering at college.", ans: "False", exp: "Dịch: Anh ấy học ngành kỹ thuật. -> Sai ('study photography at college')." },
+      { q: "10. He works in a photo shop two afternoons a week.", ans: "True", exp: "Dịch: Anh ấy làm ở tiệm ảnh 2 buổi chiều một tuần. -> Đúng ('I work two afternoons a week in a small photo shop')." },
+      { q: "11. He has lessons only on Mondays and Fridays.", ans: "False", exp: "Dịch: Anh ấy chỉ có tiết học vào thứ Hai và thứ Sáu. -> Sai ('I have lessons every weekday morning')." },
+      { q: "12. He sometimes has difficulty writing emails in English.", ans: "True", exp: "Dịch: Đôi khi anh ấy gặp khó khăn khi viết email tiếng Anh. -> Đúng ('sometimes make mistakes when I write emails')." },
+      { q: "13. Diego lives alone in a flat.", ans: "False", exp: "Dịch: Diego sống một mình. -> Sai ('I share a house with two students from Poland and one student from Vietnam')." },
+      { q: "14. He hopes to work for a travel magazine in the future.", ans: "True", exp: "Dịch: Anh ấy hy vọng làm việc cho một tạp chí du lịch. -> Đúng ('work for a travel magazine')." }
+    ],
+    matchOptions: [
+      { val: "a", text: "a. You’re welcome. I hope they’re useful." },
+      { val: "b", text: "b. Certainly. Which part do you need help with?" },
+      { val: "c", text: "c. Sure. Here you are." },
+      { val: "d", text: "d. I’d love to, but I’m working that day." },
+      { val: "e", text: "e. Of course. It’s diego at mail dot com." },
+      { val: "f", text: "f. Try not to worry. You’ve studied hard." }
+    ],
+    matchQuestions: [
+      { q: "15. Could you repeat your email address, please?", ans: "e", exp: "e. Of course. It’s diego at mail dot com. (Nhờ nhắc lại địa chỉ email.)" },
+      { q: "16. Can I have a bottle of water, please?", ans: "c", exp: "c. Sure. Here you are. (Mua một chai nước -> Chắc chắn rồi, của bạn đây.)" },
+      { q: "17. I’m really nervous about my exam tomorrow.", ans: "f", exp: "f. Try not to worry. You’ve studied hard. (Lo lắng về kỳ thi ngày mai -> Đừng lo, bạn đã học chăm chỉ rồi.)" },
+      { q: "18. Would you like to visit the museum on Saturday?", ans: "d", exp: "d. I’d love to, but I’m working that day. (Rủ đi bảo tàng thứ Bảy -> Rất muốn nhưng hôm đó tôi phải làm việc.)" },
+      { q: "19. Could you help me with this form?", ans: "b", exp: "b. Certainly. Which part do you need help with? (Nhờ giúp điền mẫu đơn -> Chắc chắn rồi, bạn cần giúp phần nào?)" },
+      { q: "20. Thanks for lending me your notes.", ans: "a", exp: "a. You’re welcome. I hope they’re useful. (Cảm ơn vì cho mượn vở ghi -> Không có gì, hy vọng chúng hữu ích.)" }
+    ],
+    mcqQuestions: [
+      { q: "21. We __________ from Argentina. We’re from Uruguay.", opts: ["A. aren’t", "B. isn’t", "C. don’t"], ans: "A. aren’t", exp: "Chủ ngữ 'We' đi với to be phủ định 'aren’t'." },
+      { q: "22. My sister __________ a doctor; she works in a school.", opts: ["A. don’t", "B. aren’t", "C. isn’t"], ans: "C. isn’t", exp: "Chủ ngữ số ít 'My sister' đi với to be phủ định 'isn’t'." },
+      { q: "23. __________ your brother at university this year?", opts: ["A. Does", "B. Is", "C. Are"], ans: "B. Is", exp: "Chủ ngữ số ít 'your brother' + cụm địa điểm 'at university' -> dùng to be 'Is'." },
+      { q: "24. “Is your teacher from Canada?” “Yes, __________.”", opts: ["A. she does", "B. she is", "C. she are"], ans: "B. she is", exp: "Câu hỏi 'Is your teacher...?' trả lời khẳng định 'Yes, she is'." },
+      { q: "25. The bus __________ outside the library every morning.", opts: ["A. stops", "B. stopping", "C. stop"], ans: "A. stops", exp: "Chủ ngữ số ít 'The bus' -> động từ thêm -s ('stops')." },
+      { q: "26. I __________ my phone during lessons because it distracts me.", opts: ["A. doesn’t use", "B. am not use", "C. don’t use"], ans: "C. don’t use", exp: "Chủ ngữ 'I' dùng phủ định 'don’t use'." },
+      { q: "27. __________ your friends visit you after class?", opts: ["A. Do", "B. Does", "C. Are"], ans: "A. Do", exp: "Chủ ngữ số nhiều 'your friends' + V nguyên thể 'visit' -> dùng 'Do'." },
+      { q: "28. Where __________ the new cleaner work?", opts: ["A. is", "B. does", "C. do"], ans: "B. does", exp: "Chủ ngữ số ít 'the new cleaner' -> dùng trợ động từ 'does'." },
+      { q: "29. “Does Mia speak Spanish?” “No, __________.”", opts: ["A. she don’t", "B. she isn’t", "C. she doesn’t"], ans: "C. she doesn’t", exp: "Câu hỏi 'Does Mia...?' trả lời phủ định là 'No, she doesn’t'." },
+      { q: "30. A photographer __________ pictures of people and places.", opts: ["A. takes", "B. take", "C. taking"], ans: "A. takes", exp: "Chủ ngữ số ít 'A photographer' -> động từ thêm -s ('takes')." }
+    ],
+    reorderQuestions: [
+      { q: "31.", words: ["where", "are", "your", "new classmates", "from", "originally", "?"], ans: "where are your new classmates from originally?", exp: "Dịch: Các bạn cùng lớp mới của bạn gốc ở đâu?" },
+      { q: "32.", words: ["my cousin", "isn’t", "an", "engineer", "or", "a", "pilot", "."], ans: "my cousin isn’t an engineer or a pilot.", exp: "Dịch: Anh/em họ của tôi không phải là kỹ sư hay phi công." },
+      { q: "33.", words: ["how many evenings", "do", "you", "study", "English", "each week", "?"], ans: "how many evenings do you study english each week?", exp: "Dịch: Bạn học tiếng Anh mấy buổi tối mỗi tuần?" },
+      { q: "34.", words: ["the students", "don’t", "usually", "use", "their phones", "in class", "."], ans: "the students don’t usually use their phones in class.", exp: "Dịch: Học sinh thường không dùng điện thoại trong lớp." },
+      { q: "35.", words: ["what time", "does", "the last lesson", "finish", "on Wednesdays", "?"], ans: "what time does the last lesson finish on wednesdays?", exp: "Dịch: Tiết học cuối cùng kết thúc lúc mấy giờ vào thứ Tư?" }
+    ],
+    verbQuestions: [
+      { q: "36. My best friend _____ (be) from Portugal.", ans: ["is"], exp: "Chủ ngữ số ít 'My best friend' -> 'is'." },
+      { q: "37. They _____ (not be) in the classroom at the moment.", ans: ["are not", "aren't", "aren’t"], exp: "Chủ ngữ số nhiều 'They' với to be phủ định -> 'aren't' / 'are not'." },
+      { q: "38. Our teacher _____ (give) us a short quiz every Friday.", ans: ["gives"], exp: "Chủ ngữ số ít 'Our teacher' -> 'gives'." },
+      { q: "39. He _____ (not go) to the gym before work.", ans: ["doesn't go", "doesn’t go", "does not go"], exp: "Phủ định hiện tại đơn với 'He' -> 'doesn't go'." },
+      { q: "40. _____ you _____ (need) a timetable for your classes?", isSplit: true, part1: "40.", mid: "you", part2: "(need) a timetable for your classes?", ans1: "do", ans2: "need", exp: "Câu hỏi hiện tại đơn với 'you': Do + you + need?" }
+    ]
+  },
+
+  // --------------------------------------------------------------------------
+  // TEST 5 (From Practice 5)
+  // --------------------------------------------------------------------------
+  {
+    id: 5,
+    title: "PROGRESS TEST 1 – PRACTICE 5",
+    wordBank: ["Mexican", "dentist", "hard", "marks", "cleaner", "studies", "break", "nationality"],
+    vocabFill: [
+      { q: "1. My best friend is from Mexico. He is _____.", ans: "Mexican", exp: "Dịch: Bạn thân của tôi đến từ Mexico. Cậu ấy là người Mexico. (Mexican)" },
+      { q: "2. A _____ checks people’s teeth and helps keep them healthy.", ans: "dentist", exp: "Dịch: Nha sĩ kiểm tra răng và giúp giữ răng khỏe mạnh. (dentist)" },
+      { q: "3. This exercise is quite _____, so read the instructions carefully.", ans: "hard", exp: "Dịch: Bài tập này khá khó, vì vậy hãy đọc kỹ hướng dẫn. (hard)" },
+      { q: "4. I got high _____ in my last English test.", ans: "marks", exp: "Dịch: Tôi đạt điểm cao trong bài kiểm tra tiếng Anh vừa rồi. (marks)" },
+      { q: "5. A _____ keeps offices, schools or hotels clean.", ans: "cleaner", exp: "Dịch: Nhân viên vệ sinh giữ cho văn phòng, trường học hoặc khách sạn sạch sẽ. (cleaner)" },
+      { q: "6. Mina _____ English at college on Tuesday and Thursday evenings.", ans: "studies", exp: "Dịch: Mina học tiếng Anh tại trường cao đẳng vào tối thứ Ba và thứ Năm. (studies)" },
+      { q: "7. We usually have a ten-minute _____ after the second lesson.", ans: "break", exp: "Dịch: Chúng tôi thường có giờ giải lao 10 phút sau tiết học thứ hai. (break)" }
+    ],
+    readingTitle: "WHY I LIKE MY JOB",
+    readingText: `I’m called Amina, and I’m twenty-one. I’m from Morocco, so I’m Moroccan. I live in a town outside the capital with my parents and younger brother. I work as a cleaner at a large college. My working day starts at six thirty in the morning, before the students arrive. I clean classrooms, check the corridors and prepare some rooms for meetings. The work is hard, but I like seeing the college look tidy when the day begins.<br><br>The teachers and office staff are friendly. They often say hello and sometimes ask me for help when they need a room ready quickly. I usually finish work at midday, so I have time to study in the afternoon. I’m taking an English course because I want to become a receptionist at a hotel. I use a timetable to organise work, lessons and homework. My English teacher says I’m making progress, but I need to learn more vocabulary and improve my grammar.<br><br>On Mondays and Wednesdays, I go to class at a community centre. At home, I review my notes and practise speaking with my brother, who is also learning English. I don’t have much free time during the week, but on Sundays I visit my aunt or meet a friend for tea. My family supports my plans. I know changing jobs will take time, but I’m ready to work hard for it.`,
+    tfQuestions: [
+      { q: "8. Amina is Moroccan.", ans: "True", exp: "Dịch: Amina là người Ma-rốc. -> Đúng ('I’m from Morocco, so I’m Moroccan')." },
+      { q: "9. She starts work after the students arrive.", ans: "False", exp: "Dịch: Cô ấy bắt đầu làm việc sau khi sinh viên đến. -> Sai ('starts at six thirty in the morning, before the students arrive')." },
+      { q: "10. She cleans classrooms and corridors.", ans: "True", exp: "Dịch: Cô ấy dọn phòng học và hành lang. -> Đúng ('I clean classrooms, check the corridors')." },
+      { q: "11. She finishes work in the evening.", ans: "False", exp: "Dịch: Cô ấy kết thúc công việc vào buổi tối. -> Sai ('I usually finish work at midday')." },
+      { q: "12. She is learning English because she wants to be a receptionist.", ans: "True", exp: "Dịch: Cô ấy học tiếng Anh vì muốn trở thành lễ tân. -> Đúng ('because I want to become a receptionist at a hotel')." },
+      { q: "13. Her English teacher thinks she has made no progress.", ans: "False", exp: "Dịch: Giáo viên nghĩ cô ấy không tiến bộ. -> Sai ('My English teacher says I’m making progress')." },
+      { q: "14. Amina practises English with her brother.", ans: "True", exp: "Dịch: Amina luyện nói tiếng Anh với em trai. -> Đúng ('practise speaking with my brother')." }
+    ],
+    matchOptions: [
+      { val: "a", text: "a. Of course. I’ll show you step by step." },
+      { val: "b", text: "b. It’s Amina." },
+      { val: "c", text: "c. No problem. Glad I could help." },
+      { val: "d", text: "d. Congratulations! You must be pleased." },
+      { val: "e", text: "e. Certainly. Would you like milk?" },
+      { val: "f", text: "f. Yes, I’m free at about one thirty." }
+    ],
+    matchQuestions: [
+      { q: "15. Could you tell me your first name?", ans: "b", exp: "b. It’s Amina. (Cho tôi biết tên của bạn? -> Là Amina.)" },
+      { q: "16. Can I have a cup of tea, please?", ans: "e", exp: "e. Certainly. Would you like milk? (Cho tôi một tách trà -> Chắc chắn rồi, bạn có muốn dùng thêm sữa không?)" },
+      { q: "17. I passed all my exams this term!", ans: "d", exp: "d. Congratulations! You must be pleased. (Tôi đã đậu tất cả các kỳ thi học kỳ này! -> Chúc mừng bạn!)" },
+      { q: "18. Could we talk after lunch?", ans: "f", exp: "f. Yes, I’m free at about one thirty. (Nói chuyện sau bữa trưa nhé? -> Được, tôi rảnh lúc khoảng 1h30.)" },
+      { q: "19. Can you show me how to use this computer?", ans: "a", exp: "a. Of course. I’ll show you step by step. (Chỉ tôi cách dùng máy tính này nhé? -> Tất nhiên, tôi sẽ chỉ từng bước.)" },
+      { q: "20. Thanks for helping me with my homework.", ans: "c", exp: "c. No problem. Glad I could help. (Cảm ơn vì đã giúp tôi làm bài tập -> Không có gì, rất vui vì giúp được bạn.)" }
+    ],
+    mcqQuestions: [
+      { q: "21. My classmates __________ from Italy; they’re from Greece.", opts: ["A. isn’t", "B. doesn’t", "C. aren’t"], ans: "C. aren’t", exp: "Chủ ngữ số nhiều 'My classmates' -> 'aren’t'." },
+      { q: "22. She __________ a dentist. She works in a hotel.", opts: ["A. isn’t", "B. aren’t", "C. don’t"], ans: "A. isn’t", exp: "Chủ ngữ số ít 'She' -> 'isn’t'." },
+      { q: "23. __________ I late for the lesson?", opts: ["A. Are", "B. Am", "C. Do"], ans: "B. Am", exp: "Chủ ngữ 'I' + tính từ 'late' -> dùng to be 'Am'." },
+      { q: "24. “Are those students from Vietnam?” “Yes, __________.”", opts: ["A. they are", "B. they do", "C. they is"], ans: "A. they are", exp: "Câu hỏi 'Are those students...?' trả lời 'Yes, they are'." },
+      { q: "25. My uncle __________ in a bank near the station.", opts: ["A. working", "B. work", "C. works"], ans: "C. works", exp: "Chủ ngữ số ít 'My uncle' -> 'works'." },
+      { q: "26. We __________ have classes on Saturday afternoon.", opts: ["A. doesn’t", "B. don’t", "C. aren’t"], ans: "B. don’t", exp: "Chủ ngữ 'We' + V nguyên thể 'have' -> 'don’t'." },
+      { q: "27. __________ your sister take the bus to college?", opts: ["A. Does", "B. Do", "C. Is"], ans: "A. Does", exp: "Chủ ngữ số ít 'your sister' + V nguyên thể 'take' -> 'Does'." },
+      { q: "28. How often __________ the cleaner check these rooms?", opts: ["A. is", "B. do", "C. does"], ans: "C. does", exp: "Chủ ngữ số ít 'the cleaner' -> 'does'." },
+      { q: "29. “Do your parents work in this town?” “No, __________.”", opts: ["A. they doesn’t", "B. they don’t", "C. they aren’t"], ans: "B. they don’t", exp: "Câu hỏi 'Do your parents...?' trả lời phủ định 'No, they don’t'." },
+      { q: "30. A shop assistant __________ customers in a shop.", opts: ["A. helps", "B. help", "C. helping"], ans: "A. helps", exp: "Chủ ngữ số ít 'A shop assistant' -> 'helps'." }
+    ],
+    reorderQuestions: [
+      { q: "31.", words: ["what", "nationality", "is", "your", "new", "classmate", "?"], ans: "what nationality is your new classmate?", exp: "Dịch: Bạn cùng lớp mới của bạn mang quốc tịch gì?" },
+      { q: "32.", words: ["my manager", "isn’t", "very", "strict", "."], ans: "my manager isn’t very strict.", exp: "Dịch: Quản lý của tôi không nghiêm khắc lắm." },
+      { q: "33.", words: ["where", "does", "your aunt", "work", "during the week", "?"], ans: "where does your aunt work during the week?", exp: "Dịch: Dì của bạn làm việc ở đâu trong tuần?" },
+      { q: "34.", words: ["we", "don’t", "usually", "have", "exams", "in the first week", "."], ans: "we don’t usually have exams in the first week.", exp: "Dịch: Chúng tôi thường không có bài thi vào tuần đầu tiên." },
+      { q: "35.", words: ["what time", "do", "the students", "finish", "their last class", "?"], ans: "what time do the students finish their last class?", exp: "Dịch: Học sinh kết thúc tiết học cuối cùng lúc mấy giờ?" }
+    ],
+    verbQuestions: [
+      { q: "36. My neighbours _____ (be) from Mexico.", ans: ["are"], exp: "Chủ ngữ số nhiều 'My neighbours' -> 'are'." },
+      { q: "37. I _____ (not be) a university student; I study at a language centre.", ans: ["am not", "'m not", "’m not"], exp: "Chủ ngữ 'I' với to be phủ định -> 'am not'." },
+      { q: "38. Our teacher _____ (start) the lesson with a short activity.", ans: ["starts"], exp: "Chủ ngữ số ít 'Our teacher' -> 'starts'." },
+      { q: "39. My father _____ (not drive) to work because he lives nearby.", ans: ["doesn't drive", "doesn’t drive", "does not drive"], exp: "Phủ định hiện tại đơn với 'My father' -> 'doesn't drive'." },
+      { q: "40. _____ your classmates _____ (speak) English in pairs?", isSplit: true, part1: "40.", mid: "your classmates", part2: "(speak) English in pairs?", ans1: "do", ans2: "speak", exp: "Chủ ngữ số nhiều 'your classmates': Do + S + speak?" }
+    ]
+  },
+
+  // --------------------------------------------------------------------------
+  // TEST 6 (From Practice 6)
+  // --------------------------------------------------------------------------
+  {
+    id: 6,
+    title: "PROGRESS TEST 1 – PRACTICE 6",
+    wordBank: ["Turkish", "shop assistant", "engineer", "friendly", "timetable", "exams", "notes", "photographer"],
+    vocabFill: [
+      { q: "1. My neighbours are from Turkey, so they are _____.", ans: "Turkish", exp: "Dịch: Hàng xóm của tôi đến từ Thổ Nhĩ Kỳ, nên họ là người Thổ Nhĩ Kỳ. (Turkish)" },
+      { q: "2. A _____ helps people choose and buy things in a shop.", ans: "shop assistant", exp: "Dịch: Nhân viên bán hàng giúp mọi người chọn và mua đồ trong cửa hàng. (shop assistant)" },
+      { q: "3. An _____ plans and designs buildings, machines or roads.", ans: "engineer", exp: "Dịch: Kỹ sư lên kế hoạch và thiết kế tòa nhà, máy móc hoặc đường xá. (engineer)" },
+      { q: "4. Our new classmates are very _____ and easy to talk to.", ans: "friendly", exp: "Dịch: Các bạn cùng lớp mới rất thân thiện và dễ bắt chuyện. (friendly)" },
+      { q: "5. I wrote all my lessons and work hours on my _____.", ans: "timetable", exp: "Dịch: Tôi đã ghi tất cả lịch học và giờ làm việc vào thời khóa biểu. (timetable)" },
+      { q: "6. We have three important _____ at the end of this month.", ans: "exams", exp: "Dịch: Chúng tôi có 3 kỳ thi quan trọng vào cuối tháng này. (exams)" },
+      { q: "7. I review my _____ before I do the homework.", ans: "notes", exp: "Dịch: Tôi xem lại vở ghi chép trước khi làm bài tập về nhà. (notes)" }
+    ],
+    readingTitle: "LEARNING ENGLISH FOR A BETTER JOB",
+    readingText: `My name is Pavel, and I’m from the Czech Republic. I’m Czech, and I moved to Dublin six months ago because I wanted to improve my English. I work as a shop assistant in a large bookshop in the city centre. I help customers find books, put new books on the shelves and answer questions about opening times. I enjoy the job because I like reading, and most of my colleagues are friendly. Fridays are usually busy because many people visit the city after work.<br><br>I attend an English class twice a week, on Tuesday and Thursday evenings. I also study at home for about thirty minutes every day. I keep a notebook for new words and write example sentences next to them. My teacher gives us short tests, and I check my mistakes carefully when I get my marks back. Speaking is easier for me than writing, so I send short emails to friends in English to practise.<br><br>My long-term plan is to become an engineer. I studied engineering in my home country, but I need stronger English to apply for jobs here. My cousin thinks I should return home, but I want to stay in Ireland for another year and gain experience. I’m saving money and checking job advertisements every weekend. I know the plan will take time, but I’m making progress and I feel more confident than I did six months ago.`,
+    tfQuestions: [
+      { q: "8. Pavel moved to Dublin six months ago.", ans: "True", exp: "Dịch: Pavel chuyển tới Dublin 6 tháng trước. -> Đúng ('moved to Dublin six months ago')." },
+      { q: "9. He works in a bookshop.", ans: "True", exp: "Dịch: Anh ấy làm việc ở một hiệu sách. -> Đúng ('work as a shop assistant in a large bookshop')." },
+      { q: "10. The bookshop is usually quiet on Fridays.", ans: "False", exp: "Dịch: Hiệu sách thường vắng vào thứ Sáu. -> Sai ('Fridays are usually busy')." },
+      { q: "11. Pavel goes to English class twice a week.", ans: "True", exp: "Dịch: Pavel đi học tiếng Anh 2 lần một tuần. -> Đúng ('attend an English class twice a week')." },
+      { q: "12. He finds writing easier than speaking.", ans: "False", exp: "Dịch: Anh ấy thấy viết dễ hơn nói. -> Sai ('Speaking is easier for me than writing')." },
+      { q: "13. He wants to become an engineer.", ans: "True", exp: "Dịch: Anh ấy muốn trở thành kỹ sư. -> Đúng ('My long-term plan is to become an engineer')." },
+      { q: "14. He has decided to return home next month.", ans: "False", exp: "Dịch: Anh ấy đã quyết định về nước vào tháng tới. -> Sai ('I want to stay in Ireland for another year')." }
+    ],
+    matchOptions: [
+      { val: "a", text: "a. Sure. Let me take the heavier one." },
+      { val: "b", text: "b. You’re welcome. I hope it helps." },
+      { val: "c", text: "c. Certainly. That’s £5.50, please." },
+      { val: "d", text: "d. Of course. What would you like to know?" },
+      { val: "e", text: "e. That’s wonderful. Good luck!" },
+      { val: "f", text: "f. Sorry, I don’t finish class until half past six." }
+    ],
+    matchQuestions: [
+      { q: "15. Could I ask you for some information about the course?", ans: "d", exp: "d. Of course. What would you like to know? (Hỏi thông tin về khóa học -> Tất nhiên, bạn muốn biết gì?)" },
+      { q: "16. Can I have a sandwich and a juice, please?", ans: "c", exp: "c. Certainly. That’s £5.50, please. (Mua bánh mì kẹp và nước ép -> Chắc chắn rồi, hết 5.50 bảng.)" },
+      { q: "17. I’ve got an interview for a new job!", ans: "e", exp: "e. That’s wonderful. Good luck! (Tôi có buổi phỏng vấn việc mới -> Tuyệt quá, chúc may mắn!)" },
+      { q: "18. Could we meet outside the library at six?", ans: "f", exp: "f. Sorry, I don’t finish class until half past six. (Hẹn gặp lúc 6h -> Xin lỗi, 6h30 tôi mới tan học.)" },
+      { q: "19. Can you help me carry these boxes upstairs?", ans: "a", exp: "a. Sure. Let me take the heavier one. (Nhờ bê thùng đồ lên lầu -> Chắc chắn rồi, để tôi bê thùng nặng hơn.)" },
+      { q: "20. Thank you for your advice.", ans: "b", exp: "b. You’re welcome. I hope it helps. (Cảm ơn lời khuyên của bạn -> Không có gì, hy vọng nó giúp ích.)" }
+    ],
+    mcqQuestions: [
+      { q: "21. My friend __________ from Poland; he is from Hungary.", opts: ["A. doesn’t", "B. isn’t", "C. aren’t"], ans: "B. isn’t", exp: "Chủ ngữ số ít 'My friend' -> 'isn’t'." },
+      { q: "22. We __________ ready for the test yet.", opts: ["A. aren’t", "B. don’t", "C. isn’t"], ans: "A. aren’t", exp: "Chủ ngữ 'We' + tính từ 'ready' -> 'aren’t'." },
+      { q: "23. __________ your new manager friendly?", opts: ["A. Does", "B. Are", "C. Is"], ans: "C. Is", exp: "Chủ ngữ số ít 'your new manager' + tính từ 'friendly' -> 'Is'." },
+      { q: "24. “Are you and Pavel classmates?” “Yes, __________.”", opts: ["A. we do", "B. we are", "C. we is"], ans: "B. we are", exp: "Câu hỏi 'Are you and Pavel...?' trả lời 'Yes, we are'." },
+      { q: "25. My cousin __________ English every evening after work.", opts: ["A. study", "B. studying", "C. studies"], ans: "C. studies", exp: "Chủ ngữ số ít 'My cousin' -> 'studies'." },
+      { q: "26. The shop __________ at eight o’clock on Sundays.", opts: ["A. doesn’t open", "B. don’t open", "C. isn’t open"], ans: "A. doesn’t open", exp: "Chủ ngữ số ít 'The shop' + V thường 'open' -> 'doesn’t open'." },
+      { q: "27. __________ your parents live near the city centre?", opts: ["A. Does", "B. Are", "C. Do"], ans: "C. Do", exp: "Chủ ngữ số nhiều 'your parents' -> 'Do'." },
+      { q: "28. What time __________ the train leave?", opts: ["A. does", "B. is", "C. do"], ans: "A. does", exp: "Chủ ngữ số ít 'the train' -> 'does'." },
+      { q: "29. “Does he study engineering?” “Yes, __________.”", opts: ["A. he is", "B. he does", "C. he do"], ans: "B. he does", exp: "Câu hỏi 'Does he...?' trả lời 'Yes, he does'." },
+      { q: "30. Engineers __________ plans for buildings and roads.", opts: ["A. make", "B. makes", "C. making"], ans: "A. make", exp: "Chủ ngữ số nhiều 'Engineers' -> động từ nguyên mẫu 'make'." }
+    ],
+    reorderQuestions: [
+      { q: "31.", words: ["why", "does", "your English teacher", "study", "at night", "?"], ans: "why does your english teacher study at night?", exp: "Dịch: Tại sao giáo viên tiếng Anh của bạn lại học vào ban đêm?" },
+      { q: "32.", words: ["my friends", "aren’t", "usually", "at home", "on Sundays", "."], ans: "my friends aren’t usually at home on sundays.", exp: "Dịch: Bạn bè tôi thường không ở nhà vào Chủ nhật." },
+      { q: "33.", words: ["how often", "does", "your manager", "check", "the timetable", "?"], ans: "how often does your manager check the timetable?", exp: "Dịch: Quản lý của bạn kiểm tra thời khóa biểu bao lâu một lần?" },
+      { q: "34.", words: ["I", "don’t", "usually", "study", "English", "late at night", "."], ans: "i don’t usually study english late at night.", exp: "Dịch: Tôi thường không học tiếng Anh vào đêm muộn." },
+      { q: "35.", words: ["where", "do", "your classmates", "have", "their English lessons", "?"], ans: "where do your classmates have their english lessons?", exp: "Dịch: Các bạn cùng lớp của bạn học tiếng Anh ở đâu?" }
+    ],
+    verbQuestions: [
+      { q: "36. My brother and I _____ (be) from the Czech Republic.", ans: ["are"], exp: "Chủ ngữ số nhiều 'My brother and I' -> 'are'." },
+      { q: "37. She _____ (not be) a shop assistant; she is a photographer.", ans: ["is not", "isn't", "isn’t"], exp: "Chủ ngữ 'She' với to be phủ định -> 'isn't' / 'is not'." },
+      { q: "38. Our English class _____ (finish) at seven thirty.", ans: ["finishes"], exp: "Chủ ngữ số ít 'Our English class', động từ tận cùng bằng -sh thêm -es -> 'finishes'." },
+      { q: "39. They _____ (not study) on Friday evenings.", ans: ["don't study", "don’t study", "do not study"], exp: "Phủ định hiện tại đơn với 'They' -> 'don't study'." },
+      { q: "40. _____ your father _____ (work) at the weekend?", isSplit: true, part1: "40.", mid: "your father", part2: "(work) at the weekend?", ans1: "does", ans2: "work", exp: "Chủ ngữ số ít 'your father': Does + S + work?" }
+    ]
+  },
+
+  // --------------------------------------------------------------------------
+  // TEST 7 (New Authentic A2.1 Test - Mateo)
+  // --------------------------------------------------------------------------
+  {
+    id: 7,
+    title: "PROGRESS TEST 1 – PRACTICE 7",
+    wordBank: ["German", "receptionist", "polite", "term", "notes", "dentist", "timetable", "exams"],
+    vocabFill: [
+      { q: "1. Lukas is from Berlin, so he is _____.", ans: "German", exp: "Dịch: Lukas đến từ Berlin (Đức), vì vậy anh ấy là người Đức. (German)" },
+      { q: "2. A _____ welcomes visitors and answers the phone at a hotel.", ans: "receptionist", exp: "Dịch: Nhân viên lễ tân chào đón khách và trả lời điện thoại ở khách sạn. (receptionist)" },
+      { q: "3. The staff in this café are very _____. They always say 'please' and 'thank you'.", ans: "polite", exp: "Dịch: Nhân viên quán cà phê này rất lịch sự. (polite)" },
+      { q: "4. The spring _____ starts in January and ends in April.", ans: "term", exp: "Dịch: Học kỳ mùa xuân bắt đầu vào tháng Giêng và kết thúc vào tháng Tư. (term)" },
+      { q: "5. Don't forget to take _____ during the history lecture today.", ans: "notes", exp: "Dịch: Đừng quên ghi chép bài trong buổi giảng lịch sử hôm nay. (take notes)" },
+      { q: "6. I need to see a _____ because my tooth hurts.", ans: "dentist", exp: "Dịch: Tôi cần đi khám nha sĩ vì bị đau răng. (dentist)" },
+      { q: "7. Look at the _____ on the wall to find out when our computer lesson starts.", ans: "timetable", exp: "Dịch: Hãy nhìn vào thời khóa biểu trên tường để biết khi nào tiết tin học bắt đầu. (timetable)" }
+    ],
+    readingTitle: "STUDYING COMPUTERS IN LONDON",
+    readingText: `My name is Mateo, and I’m twenty-two years old. I’m from Argentina, so I’m Argentinian, but right now I live in London with my older sister. I study computer science at a technical college four mornings a week. On Mondays, Wednesdays, Thursdays and Fridays, my lessons start at nine o’clock and finish at half past twelve. We have a twenty-minute break at ten thirty.<br><br>In the afternoons, I work part-time in a busy coffee shop near the train station. I make coffee, serve food and clean the tables. My colleagues are very friendly, and my manager says I’m polite and fast. Tuesday is my favourite weekday because I don’t have college classes, so I can sleep a little later and study in the library.<br><br>I always write my work hours and exam dates on my timetable. Every evening after dinner, I read my class notes for an hour because I want to get high marks this term. In the future, I want to become an IT engineer for an international company. It’s sometimes hard to work and study at the same time, but my sister helps me cook dinner during the week, and on Sundays we always relax together.`,
+    tfQuestions: [
+      { q: "8. Mateo is Argentinian and lives in London with his sister.", ans: "True", exp: "Dịch: Mateo là người Argentina và sống ở London với chị gái. -> Đúng ('I’m Argentinian, but right now I live in London with my older sister')." },
+      { q: "9. He has college lessons every weekday morning.", ans: "False", exp: "Dịch: Anh ấy có tiết học vào tất cả các buổi sáng trong tuần. -> Sai (Anh ấy học 4 buổi sáng, thứ Ba được nghỉ: 'Tuesday is my favourite weekday because I don’t have college classes')." },
+      { q: "10. His morning classes finish at 12:30.", ans: "True", exp: "Dịch: Các lớp buổi sáng của anh ấy kết thúc lúc 12h30. -> Đúng ('finish at half past twelve')." },
+      { q: "11. Mateo works in a coffee shop in the mornings.", ans: "False", exp: "Dịch: Mateo làm ở quán cà phê vào buổi sáng. -> Sai ('In the afternoons, I work part-time in a busy coffee shop')." },
+      { q: "12. He studies in the library on Tuesdays.", ans: "True", exp: "Dịch: Anh ấy học ở thư viện vào thứ Ba. -> Đúng ('study in the library')." },
+      { q: "13. He never reads his notes in the evening.", ans: "False", exp: "Dịch: Anh ấy không bao giờ đọc lại ghi chú vào buổi tối. -> Sai ('Every evening after dinner, I read my class notes')." },
+      { q: "14. Mateo wants to be an IT engineer in the future.", ans: "True", exp: "Dịch: Mateo muốn trở thành kỹ sư CNTT trong tương lai. -> Đúng ('I want to become an IT engineer')." }
+    ],
+    matchOptions: [
+      { val: "a", text: "a. It’s M-A-T-E-O." },
+      { val: "b", text: "b. No problem. See you tomorrow!" },
+      { val: "c", text: "c. Sure. Would you like it hot or iced?" },
+      { val: "d", text: "d. Well done! You worked really hard for it." },
+      { val: "e", text: "e. Sorry, I’m working at the café this afternoon." },
+      { val: "f", text: "f. Of course. Which word don’t you understand?" }
+    ],
+    matchQuestions: [
+      { q: "15. Could you spell your first name, please?", ans: "a", exp: "a. It’s M-A-T-E-O. (Bạn đánh vần tên của bạn được không? -> M-A-T-E-O.)" },
+      { q: "16. Can I have a large green tea, please?", ans: "c", exp: "c. Sure. Would you like it hot or iced? (Cho tôi một trà xanh cỡ lớn -> Chắc chắn rồi, bạn muốn uống nóng hay đá?)" },
+      { q: "17. I got the highest mark in my computer test!", ans: "d", exp: "d. Well done! You worked really hard for it. (Tôi đạt điểm cao nhất bài kiểm tra tin học! -> Làm tốt lắm!)" },
+      { q: "18. Can we study together at three o’clock today?", ans: "e", exp: "e. Sorry, I’m working at the café this afternoon. (Học cùng nhau lúc 3h chiều nay nhé? -> Xin lỗi, chiều nay tôi làm ở quán cà phê.)" },
+      { q: "19. Could you help me with this English exercise?", ans: "f", exp: "f. Of course. Which word don’t you understand? (Giúp tôi bài tập tiếng Anh này nhé? -> Tất nhiên, từ nào bạn không hiểu?)" },
+      { q: "20. Thanks for cleaning the tables for me.", ans: "b", exp: "b. No problem. See you tomorrow! (Cảm ơn vì đã lau bàn giúp tôi -> Không có gì. Hẹn gặp ngày mai!)" }
+    ],
+    mcqQuestions: [
+      { q: "21. Hans and Greta __________ from Austria; they’re from Germany.", opts: ["A. isn’t", "B. aren’t", "C. don’t"], ans: "B. aren’t", exp: "Chủ ngữ số nhiều 'Hans and Greta' -> dùng to be phủ định 'aren’t'." },
+      { q: "22. Our classroom __________ on the first floor. It’s on the second floor.", opts: ["A. isn’t", "B. doesn’t", "C. aren’t"], ans: "A. isn’t", exp: "Chủ ngữ số ít 'Our classroom' -> 'isn’t'." },
+      { q: "23. __________ you in the same English group as Mateo?", opts: ["A. Do", "B. Is", "C. Are"], ans: "C. Are", exp: "Chủ ngữ 'you' + cụm giới từ 'in the same...' -> dùng to be 'Are'." },
+      { q: "24. “Is your sister a receptionist?” “No, __________.”", opts: ["A. she isn’t", "B. she doesn’t", "C. she not"], ans: "A. she isn’t", exp: "Câu hỏi 'Is your sister...?' trả lời phủ định 'No, she isn’t'." },
+      { q: "25. My sister __________ dinner for us from Monday to Friday.", opts: ["A. cook", "B. cooks", "C. cooking"], ans: "B. cooks", exp: "Chủ ngữ số ít 'My sister' -> động từ thêm -s ('cooks')." },
+      { q: "26. They __________ have college classes on Tuesdays.", opts: ["A. aren’t", "B. doesn’t", "C. don’t"], ans: "C. don’t", exp: "Chủ ngữ 'They' + V nguyên mẫu 'have' -> 'don’t'." },
+      { q: "27. __________ this bus go to the train station?", opts: ["A. Does", "B. Do", "C. Is"], ans: "A. Does", exp: "Chủ ngữ số ít 'this bus' + V nguyên mẫu 'go' -> 'Does'." },
+      { q: "28. When __________ your autumn term start?", opts: ["A. is", "B. do", "C. does"], ans: "C. does", exp: "Chủ ngữ số ít 'your autumn term' + V nguyên mẫu 'start' -> 'does'." },
+      { q: "29. “Do you work on Sunday evenings?” “No, __________.”", opts: ["A. I am not", "B. I don’t", "C. I doesn’t"], ans: "B. I don’t", exp: "Câu hỏi 'Do you...?' trả lời phủ định là 'No, I don’t'." },
+      { q: "30. A dentist __________ people look after their teeth.", opts: ["A. help", "B. helping", "C. helps"], ans: "C. helps", exp: "Chủ ngữ số ít 'A dentist' -> động từ thêm -s ('helps')." }
+    ],
+    reorderQuestions: [
+      { q: "31.", words: ["where", "is", "your", "new manager", "from", "originally", "?"], ans: "where is your new manager from originally?", exp: "Dịch: Người quản lý mới của bạn gốc ở đâu?" },
+      { q: "32.", words: ["the exams", "at the end", "of the term", "aren’t", "easy", "."], ans: "the exams at the end of the term aren’t easy.", exp: "Dịch: Các kỳ thi vào cuối học kỳ không hề dễ." },
+      { q: "33.", words: ["how many mornings", "does", "Mateo", "go", "to college", "?"], ans: "how many mornings does mateo go to college?", exp: "Dịch: Mateo đi học cao đẳng mấy buổi sáng?" },
+      { q: "34.", words: ["he", "doesn’t", "usually", "drink", "coffee", "in the evening", "."], ans: "he doesn’t usually drink coffee in the evening.", exp: "Dịch: Anh ấy thường không uống cà phê vào buổi tối." },
+      { q: "35.", words: ["what time", "do", "you", "have", "a break", "in the morning", "?"], ans: "what time do you have a break in the morning?", exp: "Dịch: Bạn nghỉ giải lao lúc mấy giờ vào buổi sáng?" }
+    ],
+    verbQuestions: [
+      { q: "36. The nurses in this hospital _____ (be) very kind.", ans: ["are"], exp: "Chủ ngữ số nhiều 'The nurses' -> 'are'." },
+      { q: "37. It _____ (not be) cold today, so we can walk to school.", ans: ["is not", "isn't", "isn’t"], exp: "Chủ ngữ 'It' với to be phủ định -> 'isn't' / 'is not'." },
+      { q: "38. My brother _____ (teach) maths at a high school.", ans: ["teaches"], exp: "Chủ ngữ số ít 'My brother', động từ tận cùng bằng -ch thêm -es -> 'teaches'." },
+      { q: "39. I _____ (not work) on Tuesdays because I study in the library.", ans: ["don't work", "don’t work", "do not work"], exp: "Phủ định hiện tại đơn với 'I' -> 'don't work'." },
+      { q: "40. _____ your sister _____ (help) you with your homework?", isSplit: true, part1: "40.", mid: "your sister", part2: "(help) you with your homework?", ans1: "does", ans2: "help", exp: "Chủ ngữ số ít 'your sister': Does + S + help?" }
+    ]
+  },
+
+  // --------------------------------------------------------------------------
+  // TEST 8 (New Authentic A2.1 Test - Mai)
+  // --------------------------------------------------------------------------
+  {
+    id: 8,
+    title: "PROGRESS TEST 1 – PRACTICE 8",
+    wordBank: ["Vietnamese", "nurse", "kind", "marks", "break", "police officer", "studies", "hard"],
+    vocabFill: [
+      { q: "1. Minh is from Hanoi, so he is _____.", ans: "Vietnamese", exp: "Dịch: Minh đến từ Hà Nội, vì vậy anh ấy là người Việt Nam. (Vietnamese)" },
+      { q: "2. My sister wants to be a _____ because she loves helping sick people in hospital.", ans: "nurse", exp: "Dịch: Chị tôi muốn trở thành y tá vì thích giúp đỡ người bệnh. (nurse)" },
+      { q: "3. Mrs Baker is very _____ to new students and always helps them.", ans: "kind", exp: "Dịch: Cô Baker rất tốt bụng với học sinh mới và luôn giúp đỡ họ. (kind)" },
+      { q: "4. If you review your notes every day, you will get good _____ in the exam.", ans: "marks", exp: "Dịch: Nếu bạn ôn bài mỗi ngày, bạn sẽ đạt điểm cao trong kỳ thi. (marks)" },
+      { q: "5. Let’s have a fifteen-minute _____ and get some fresh air.", ans: "break", exp: "Dịch: Hãy nghỉ giải lao 15 phút và hít thở không khí trong lành. (break)" },
+      { q: "6. Ask that _____ for directions to the museum.", ans: "police officer", exp: "Dịch: Hãy hỏi người cảnh sát kia đường đi đến viện bảo tàng. (police officer)" },
+      { q: "7. Lan _____ English and biology at college.", ans: "studies", exp: "Dịch: Lan học tiếng Anh và sinh học tại trường cao đẳng. (studies)" }
+    ],
+    readingTitle: "MY LIFE AS A NURSING STUDENT",
+    readingText: `Hello! My name is Mai, and I’m twenty years old. I’m from Vietnam, so I’m Vietnamese, and I’m currently studying in Sydney, Australia. I live in a student house near my college with three other girls. I study nursing because I want to become a nurse in a children’s hospital. My course is very interesting, but the science subjects are sometimes hard.<br><br>I have classes from Monday to Thursday. I always sit at the front of the classroom and take clear notes. After lunch, we usually have a thirty-minute break before our afternoon practice in the lab. My teachers are kind and always answer my questions after class. Last month, I got very good marks in my first biology test.<br><br>On Fridays and Saturdays, I work part-time as a shop assistant in a small supermarket. I help customers find products and check prices. The supermarket is very busy on Saturday mornings, but I enjoy talking to local people because it helps me improve my English speaking skills. On Sundays, I don’t work or go to college. I clean my room, call my parents in Vietnam and prepare my timetable for the new week.`,
+    tfQuestions: [
+      { q: "8. Mai is Vietnamese and studies in Australia.", ans: "True", exp: "Dịch: Mai là người Việt Nam và đang học ở Úc. -> Đúng ('I’m from Vietnam... studying in Sydney, Australia')." },
+      { q: "9. She wants to work in a hotel in the future.", ans: "False", exp: "Dịch: Cô ấy muốn làm việc ở khách sạn trong tương lai. -> Sai ('I want to become a nurse in a children’s hospital')." },
+      { q: "10. Mai has college classes four days a week.", ans: "True", exp: "Dịch: Mai có lớp ở trường 4 ngày một tuần. -> Đúng ('I have classes from Monday to Thursday')." },
+      { q: "11. She got bad marks in her first biology test.", ans: "False", exp: "Dịch: Cô ấy bị điểm kém trong bài kiểm tra sinh học đầu tiên. -> Sai ('I got very good marks in my first biology test')." },
+      { q: "12. She works in a supermarket on Fridays and Saturdays.", ans: "True", exp: "Dịch: Cô ấy làm việc ở siêu thị vào thứ Sáu và thứ Bảy. -> Đúng ('On Fridays and Saturdays, I work part-time as a shop assistant in a small supermarket')." },
+      { q: "13. Talking to customers helps her practise speaking English.", ans: "True", exp: "Dịch: Nói chuyện với khách hàng giúp cô ấy luyện nói tiếng Anh. -> Đúng ('it helps me improve my English speaking skills')." },
+      { q: "14. Mai works at the supermarket on Sunday mornings.", ans: "False", exp: "Dịch: Mai làm ở siêu thị vào sáng Chủ nhật. -> Sai ('On Sundays, I don’t work or go to college')." }
+    ],
+    matchOptions: [
+      { val: "a", text: "a. It’s in Room 302 on the third floor." },
+      { val: "b", text: "b. Certainly. Cash or card?" },
+      { val: "c", text: "c. You’re welcome. Have a nice day!" },
+      { val: "d", text: "d. That’s fantastic! Your parents must be proud." },
+      { val: "e", text: "e. Sorry, I have a biology class at two." },
+      { val: "f", text: "f. Sure. Give me a minute to find my pen." }
+    ],
+    matchQuestions: [
+      { q: "15. Excuse me, where is the nursing class today?", ans: "a", exp: "a. It’s in Room 302 on the third floor. (Hỏi phòng học -> Ở phòng 302 trên tầng 3.)" },
+      { q: "16. Can I pay for these apples, please?", ans: "b", exp: "b. Certainly. Cash or card? (Thanh toán tiền táo -> Chắc chắn rồi. Tiền mặt hay thẻ ạ?)" },
+      { q: "17. I got 95% in my science exam!", ans: "d", exp: "d. That’s fantastic! Your parents must be proud. (Đạt 95% bài thi khoa học -> Tuyệt quá, bố mẹ bạn hẳn rất tự hào.)" },
+      { q: "18. Could we go shopping at two o’clock?", ans: "e", exp: "e. Sorry, I have a biology class at two. (Rủ đi mua sắm lúc 2h -> Xin lỗi, tôi có lớp sinh học lúc 2h.)" },
+      { q: "19. Can you write down your phone number for me?", ans: "f", exp: "f. Sure. Give me a minute to find my pen. (Nhờ ghi số điện thoại -> Chắc chắn rồi, đợi tôi tìm cây bút.)" },
+      { q: "20. Thank you for helping me find the milk.", ans: "c", exp: "c. You’re welcome. Have a nice day! (Cảm ơn đã giúp tìm sữa -> Không có gì, chúc một ngày tốt lành!)" }
+    ],
+    mcqQuestions: [
+      { q: "21. I __________ from China; I’m from Vietnam.", opts: ["A. am not", "B. isn’t", "C. don’t"], ans: "A. am not", exp: "Chủ ngữ 'I' đi với to be phủ định 'am not'." },
+      { q: "22. The science exams __________ easy, so we study hard.", opts: ["A. isn’t", "B. don’t", "C. aren’t"], ans: "C. aren’t", exp: "Chủ ngữ số nhiều 'The science exams' -> 'aren’t'." },
+      { q: "23. __________ the supermarket busy on Saturday mornings?", opts: ["A. Does", "B. Is", "C. Are"], ans: "B. Is", exp: "Chủ ngữ số ít 'the supermarket' + tính từ 'busy' -> 'Is'." },
+      { q: "24. “Are your housemates friendly?” “Yes, __________.”", opts: ["A. they are", "B. they do", "C. she is"], ans: "A. they are", exp: "Câu hỏi 'Are your housemates...?' trả lời 'Yes, they are'." },
+      { q: "25. Mai __________ her parents in Vietnam every Sunday.", opts: ["A. call", "B. calling", "C. calls"], ans: "C. calls", exp: "Chủ ngữ số ít 'Mai' -> động từ thêm -s ('calls')." },
+      { q: "26. Police officers __________ work in a single office all day.", opts: ["A. doesn’t", "B. don’t", "C. aren’t"], ans: "B. don’t", exp: "Chủ ngữ số nhiều 'Police officers' + V nguyên thể 'work' -> 'don’t'." },
+      { q: "27. __________ Mai work at the supermarket on Sundays?", opts: ["A. Does", "B. Do", "C. Is"], ans: "A. Does", exp: "Chủ ngữ số ít 'Mai' + V nguyên thể 'work' -> 'Does'." },
+      { q: "28. What subjects __________ you study at college?", opts: ["A. are", "B. does", "C. do"], ans: "C. do", exp: "Chủ ngữ 'you' + V nguyên thể 'study' -> 'do'." },
+      { q: "29. “Does your course start in September?” “Yes, __________.”", opts: ["A. it does", "B. it is", "C. they do"], ans: "A. it does", exp: "Chủ ngữ số ít 'your course' (it) với câu hỏi 'Does...?' -> 'Yes, it does'." },
+      { q: "30. A nurse __________ after patients in a hospital.", opts: ["A. look", "B. looks", "C. looking"], ans: "B. looks", exp: "Chủ ngữ số ít 'A nurse' -> động từ thêm -s ('looks')." }
+    ],
+    reorderQuestions: [
+      { q: "31.", words: ["what", "is", "your", "favourite", "subject", "at college", "?"], ans: "what is your favourite subject at college?", exp: "Dịch: Môn học yêu thích của bạn ở trường cao đẳng là gì?" },
+      { q: "32.", words: ["the supermarket", "isn’t", "quiet", "on", "Saturday mornings", "."], ans: "the supermarket isn’t quiet on saturday mornings.", exp: "Dịch: Siêu thị không vắng vẻ vào các buổi sáng thứ Bảy." },
+      { q: "33.", words: ["how often", "do", "you", "call", "your family", "?"], ans: "how often do you call your family?", exp: "Dịch: Bạn gọi điện cho gia đình bao lâu một lần?" },
+      { q: "34.", words: ["she", "doesn’t", "usually", "work", "on", "Sundays", "."], ans: "she doesn’t usually work on sundays.", exp: "Dịch: Cô ấy thường không làm việc vào Chủ nhật." },
+      { q: "35.", words: ["where", "do", "the nursing students", "have", "their afternoon classes", "?"], ans: "where do the nursing students have their afternoon classes?", exp: "Dịch: Các sinh viên điều dưỡng học tiết buổi chiều ở đâu?" }
+    ],
+    verbQuestions: [
+      { q: "36. Biology and chemistry _____ (be) important subjects for nurses.", ans: ["are"], exp: "Chủ ngữ số nhiều 'Biology and chemistry' -> 'are'." },
+      { q: "37. She _____ (not be) at home right now; she’s at the library.", ans: ["is not", "isn't", "isn’t"], exp: "Chủ ngữ 'She' với to be phủ định -> 'isn't' / 'is not'." },
+      { q: "38. My roommate _____ (wash) the dishes after dinner.", ans: ["washes"], exp: "Chủ ngữ số ít 'My roommate', động từ tận cùng bằng -sh thêm -es -> 'washes'." },
+      { q: "39. We _____ (not have) any classes on Friday mornings.", ans: ["don't have", "don’t have", "do not have"], exp: "Phủ định hiện tại đơn với 'We' -> 'don't have'." },
+      { q: "40. _____ your teacher _____ (explain) the grammar clearly?", isSplit: true, part1: "40.", mid: "your teacher", part2: "(explain) the grammar clearly?", ans1: "does", ans2: "explain", exp: "Chủ ngữ số ít 'your teacher': Does + S + explain?" }
+    ]
+  },
+
+  // --------------------------------------------------------------------------
+  // TEST 9 (New Authentic A2.1 Test - Omar)
+  // --------------------------------------------------------------------------
+  {
+    id: 9,
+    title: "PROGRESS TEST 1 – PRACTICE 9",
+    wordBank: ["Polish", "taxi driver", "friendly", "exam", "timetable", "cleaner", "notes", "term"],
+    vocabFill: [
+      { q: "1. Kasia is from Warsaw in Poland, so she is _____.", ans: "Polish", exp: "Dịch: Kasia đến từ Ba Lan, vì vậy cô ấy là người Ba Lan. (Polish)" },
+      { q: "2. A _____ drives a car and takes passengers to different places in the city.", ans: "taxi driver", exp: "Dịch: Tài xế taxi lái xe đưa hành khách tới các địa điểm trong thành phố. (taxi driver)" },
+      { q: "3. Everyone in my English class is very _____. We always help each other.", ans: "friendly", exp: "Dịch: Mọi người trong lớp tiếng Anh đều rất thân thiện. (friendly)" },
+      { q: "4. I’m studying tonight because we have a big grammar _____ tomorrow.", ans: "exam", exp: "Dịch: Tối nay tôi đang ôn bài vì ngày mai có bài thi ngữ pháp lớn. (exam)" },
+      { q: "5. I check my _____ every evening so I don’t forget my morning classes.", ans: "timetable", exp: "Dịch: Tôi kiểm tra thời khóa biểu mỗi tối để không quên lớp học sáng. (timetable)" },
+      { q: "6. The _____ comes at seven o’clock in the evening to clean the offices.", ans: "cleaner", exp: "Dịch: Nhân viên vệ sinh đến lúc 7h tối để dọn dẹp văn phòng. (cleaner)" },
+      { q: "7. How many weeks are there in the winter _____ at your college?", ans: "term", exp: "Dịch: Có bao nhiêu tuần trong học kỳ mùa đông ở trường của bạn? (term)" }
+    ],
+    readingTitle: "DRIVING BY DAY, STUDYING BY NIGHT",
+    readingText: `My name is Omar, and I’m twenty-five years old. I’m from Egypt, so I’m Egyptian, but I moved to Toronto three years ago. I’m a taxi driver, and I work from seven in the morning until two in the afternoon on weekdays. I like my job because I meet many different people and I know all the streets in the city. Mornings are very busy because lots of people need a taxi to go to the airport or train station.<br><br>After I finish work, I go home, have lunch and rest for an hour. On Monday, Wednesday and Thursday evenings, I go to a community college. I study English and business because I want to start my own transport company in the future. I always keep a small notebook in my bag and review my vocabulary notes when I’m waiting for passengers.<br><br>My business teacher is very hard-working and gives us homework every week. Sometimes I get tired at night, but my wife supports me and helps me organise my timetable. At the weekend, I don’t drive my taxi. I spend Saturday and Sunday with my wife and our little son. We often visit the park or have dinner with my brother’s family.`,
+    tfQuestions: [
+      { q: "8. Omar moved to Toronto three years ago.", ans: "True", exp: "Dịch: Omar chuyển đến Toronto 3 năm trước. -> Đúng ('moved to Toronto three years ago')." },
+      { q: "9. He works as a taxi driver in the evenings.", ans: "False", exp: "Dịch: Anh ấy làm tài xế taxi vào buổi tối. -> Sai ('I work from seven in the morning until two in the afternoon')." },
+      { q: "10. Many passengers take his taxi to the airport in the morning.", ans: "True", exp: "Dịch: Nhiều hành khách đi taxi của anh ấy ra sân bay vào buổi sáng. -> Đúng ('lots of people need a taxi to go to the airport')." },
+      { q: "11. Omar has college classes three evenings a week.", ans: "True", exp: "Dịch: Omar có lớp học 3 buổi tối một tuần. -> Đúng ('On Monday, Wednesday and Thursday evenings, I go to a community college')." },
+      { q: "12. He wants to become a dentist in the future.", ans: "False", exp: "Dịch: Anh ấy muốn trở thành nha sĩ. -> Sai ('I want to start my own transport company')." },
+      { q: "13. He reviews vocabulary when he is waiting for passengers.", ans: "True", exp: "Dịch: Anh ấy ôn từ vựng khi đang đợi khách. -> Đúng ('review my vocabulary notes when I’m waiting for passengers')." },
+      { q: "14. Omar works all day on Saturdays and Sundays.", ans: "False", exp: "Dịch: Omar làm việc cả ngày thứ Bảy và Chủ nhật. -> Sai ('At the weekend, I don’t drive my taxi')." }
+    ],
+    matchOptions: [
+      { val: "a", text: "a. To the Central Hotel, please." },
+      { val: "b", text: "b. You’re welcome. Drive safely!" },
+      { val: "c", text: "c. Sorry, I have an evening class on Wednesday." },
+      { val: "d", text: "d. Of course. Here is a copy for you." },
+      { val: "e", text: "e. Great! Let’s celebrate after class." },
+      { val: "f", text: "f. It’s O-M-A-R." }
+    ],
+    matchQuestions: [
+      { q: "15. Good morning! Where would you like to go?", ans: "a", exp: "a. To the Central Hotel, please. (Tài xế hỏi khách muốn đi đâu -> Cho tôi đến khách sạn Central.)" },
+      { q: "16. How do you spell your name, please?", ans: "f", exp: "f. It’s O-M-A-R. (Bạn đánh vần tên thế nào? -> O-M-A-R.)" },
+      { q: "17. Can I have a copy of the class timetable, please?", ans: "d", exp: "d. Of course. Here is a copy for you. (Xin một bản thời khóa biểu -> Tất nhiên, của bạn đây.)" },
+      { q: "18. We finished our group project on time!", ans: "e", exp: "e. Great! Let’s celebrate after class. (Hoàn thành dự án nhóm đúng hạn -> Tuyệt quá! Hãy ăn mừng sau giờ học.)" },
+      { q: "19. Are you free for dinner this Wednesday evening?", ans: "c", exp: "c. Sorry, I have an evening class on Wednesday. (Tối thứ Tư này rảnh ăn tối không? -> Xin lỗi, tôi có lớp tối thứ Tư.)" },
+      { q: "20. Thank you for the ride!", ans: "b", exp: "b. You’re welcome. Drive safely! / Không có gì!" }
+    ],
+    mcqQuestions: [
+      { q: "21. Omar __________ Canadian; he’s from Egypt.", opts: ["A. doesn’t", "B. isn’t", "C. aren’t"], ans: "B. isn’t", exp: "Chủ ngữ số ít 'Omar' + quốc tịch 'Canadian' -> 'isn’t'." },
+      { q: "22. My brothers __________ taxi drivers. They are engineers.", opts: ["A. aren’t", "B. isn’t", "C. don’t"], ans: "A. aren’t", exp: "Chủ ngữ số nhiều 'My brothers' -> 'aren’t'." },
+      { q: "23. __________ the streets busy at seven in the morning?", opts: ["A. Is", "B. Do", "C. Are"], ans: "C. Are", exp: "Chủ ngữ số nhiều 'the streets' + tính từ 'busy' -> 'Are'." },
+      { q: "24. “Is your wife a teacher?” “No, __________.”", opts: ["A. she doesn’t", "B. she isn’t", "C. she aren’t"], ans: "B. she isn’t", exp: "Câu hỏi 'Is your wife...?' trả lời 'No, she isn’t'." },
+      { q: "25. Omar __________ work at two o’clock every afternoon.", opts: ["A. finish", "B. finishes", "C. finishing"], ans: "B. finishes", exp: "Chủ ngữ số ít 'Omar', động từ tận cùng bằng -sh thêm -es -> 'finishes'." },
+      { q: "26. I __________ drive my taxi at the weekend.", opts: ["A. don’t", "B. doesn’t", "C. am not"], ans: "A. don’t", exp: "Chủ ngữ 'I' + V nguyên mẫu 'drive' -> 'don’t'." },
+      { q: "27. __________ you keep a notebook for new English words?", opts: ["A. Are", "B. Does", "C. Do"], ans: "C. Do", exp: "Chủ ngữ 'you' + V nguyên mẫu 'keep' -> 'Do'." },
+      { q: "28. What time __________ the evening lesson begin?", opts: ["A. does", "B. do", "C. is"], ans: "A. does", exp: "Chủ ngữ số ít 'the evening lesson' -> 'does'." },
+      { q: "29. “Do passengers talk to you in the taxi?” “Yes, __________.”", opts: ["A. they are", "B. they do", "C. they does"], ans: "B. they do", exp: "Câu hỏi 'Do passengers...?' trả lời 'Yes, they do'." },
+      { q: "30. A taxi driver __________ all the streets in the city.", opts: ["A. know", "B. knowing", "C. knows"], ans: "C. knows", exp: "Chủ ngữ số ít 'A taxi driver' -> 'knows'." }
+    ],
+    reorderQuestions: [
+      { q: "31.", words: ["where", "are", "your", "neighbours", "originally", "from", "?"], ans: "where are your neighbours originally from?", exp: "Dịch: Hàng xóm của bạn gốc ở đâu?" },
+      { q: "32.", words: ["my", "business classes", "aren’t", "on", "Friday evenings", "."], ans: "my business classes aren’t on friday evenings.", exp: "Dịch: Các lớp kinh doanh của tôi không diễn ra vào tối thứ Sáu." },
+      { q: "33.", words: ["how many hours", "does", "Omar", "work", "every weekday", "?"], ans: "how many hours does omar work every weekday?", exp: "Dịch: Omar làm việc bao nhiêu tiếng mỗi ngày trong tuần?" },
+      { q: "34.", words: ["we", "don’t", "usually", "watch", "TV", "in the morning", "."], ans: "we don’t usually watch tv in the morning.", exp: "Dịch: Chúng tôi thường không xem TV vào buổi sáng." },
+      { q: "35.", words: ["what", "do", "you", "usually", "do", "on Sundays", "?"], ans: "what do you usually do on sundays?", exp: "Dịch: Bạn thường làm gì vào các ngày Chủ nhật?" }
+    ],
+    verbQuestions: [
+      { q: "36. My son _____ (be) five years old.", ans: ["is"], exp: "Chủ ngữ số ít 'My son' -> 'is'." },
+      { q: "37. We _____ (not be) free on Wednesday evenings because we have class.", ans: ["are not", "aren't", "aren’t"], exp: "Chủ ngữ 'We' với to be phủ định -> 'aren't' / 'are not'." },
+      { q: "38. He _____ (carry) a small dictionary in his work bag.", ans: ["carries"], exp: "Chủ ngữ số ít 'He', động từ 'carry' đổi y -> ies thành 'carries'." },
+      { q: "39. My sister _____ (not like) driving in busy city traffic.", ans: ["doesn't like", "doesn’t like", "does not like"], exp: "Phủ định hiện tại đơn với 'My sister' -> 'doesn't like'." },
+      { q: "40. _____ you and your wife _____ (visit) the park at weekends?", isSplit: true, part1: "40.", mid: "you and your wife", part2: "(visit) the park at weekends?", ans1: "do", ans2: "visit", exp: "Chủ ngữ số nhiều 'you and your wife': Do + S + visit?" }
+    ]
+  },
+
+  // --------------------------------------------------------------------------
+  // TEST 10 (New Authentic A2.1 Test - Elena)
+  // --------------------------------------------------------------------------
+  {
+    id: 10,
+    title: "PROGRESS TEST 1 – PRACTICE 10",
+    wordBank: ["Greek", "receptionist", "hard-working", "break", "marks", "pilot", "studies", "timetable"],
+    vocabFill: [
+      { q: "1. Elena is from Athens in Greece, so she is _____.", ans: "Greek", exp: "Dịch: Elena đến từ Athens (Hy Lạp), nên cô ấy là người Hy Lạp. (Greek)" },
+      { q: "2. I work as a _____ at the city museum and welcome visitors at the front desk.", ans: "receptionist", exp: "Dịch: Tôi làm lễ tân tại bảo tàng thành phố và đón khách ở quầy. (receptionist)" },
+      { q: "3. My classmate is very _____. He studies for three hours every evening.", ans: "hard-working", exp: "Dịch: Bạn cùng lớp của tôi rất chăm chỉ. Cậu ấy học 3 tiếng mỗi tối. (hard-working)" },
+      { q: "4. At eleven o’clock, the students have a twenty-minute _____ for coffee.", ans: "break", exp: "Dịch: Lúc 11 giờ, sinh viên có 20 phút nghỉ giải lao uống cà phê. (break)" },
+      { q: "5. Our teacher always gives us our test _____ on Mondays.", ans: "marks", exp: "Dịch: Giáo viên luôn trả điểm bài kiểm tra cho chúng tôi vào thứ Hai. (marks)" },
+      { q: "6. Her uncle is a _____ for a big airline and flies to Tokyo every month.", ans: "pilot", exp: "Dịch: Chú của cô ấy là phi công cho một hãng hàng không lớn. (pilot)" },
+      { q: "7. David _____ photography and art history at college.", ans: "studies", exp: "Dịch: David học nhiếp ảnh và lịch sử nghệ thuật ở trường cao đẳng. (studies)" }
+    ],
+    readingTitle: "ART, LANGUAGES AND A BUSY WEEK",
+    readingText: `My name is Elena, and I’m twenty-one. I’m from Greece, so I’m Greek, and I now live in Berlin. I share a comfortable flat near the underground station with my cousin. Four days a week, from Tuesday to Friday, I work as a receptionist at an art museum in the morning. I sell tickets, give visitors museum maps and answer questions in English and German. The museum is closed on Mondays, so I have the whole day free for my college studies.<br><br>In the afternoons, I study photography at an art college. My classes start at two o’clock and finish at five. I love my course because our teachers are friendly and the lessons are very practical. I always take notes in my notebook and check my timetable every evening. Before exams, my cousin and I test each other on new words.<br><br>In the future, I want to be a professional photographer for an art magazine. At weekends, I walk around Berlin with my camera and take pictures of old buildings and parks. I don’t earn a lot of money at my museum job, but I’m happy because I’m learning new skills every day.`,
+    tfQuestions: [
+      { q: "8. Elena is Greek and lives in Berlin with her cousin.", ans: "True", exp: "Dịch: Elena là người Hy Lạp và sống ở Berlin với chị/em họ. -> Đúng ('I’m Greek, and I now live in Berlin. I share a comfortable flat... with my cousin')." },
+      { q: "9. She works at the art museum on Mondays.", ans: "False", exp: "Dịch: Cô ấy làm việc ở bảo tàng vào thứ Hai. -> Sai ('The museum is closed on Mondays')." },
+      { q: "10. She speaks English and German to visitors at the museum.", ans: "True", exp: "Dịch: Cô ấy nói tiếng Anh và tiếng Đức với du khách ở bảo tàng. -> Đúng ('answer questions in English and German')." },
+      { q: "11. Elena has photography classes in the morning.", ans: "False", exp: "Dịch: Elena học nhiếp ảnh vào buổi sáng. -> Sai ('In the afternoons, I study photography... My classes start at two o’clock')." },
+      { q: "12. Her afternoon classes finish at five o’clock.", ans: "True", exp: "Dịch: Các lớp buổi chiều của cô ấy kết thúc lúc 5 giờ. -> Đúng ('finish at five')." },
+      { q: "13. She wants to become a pilot in the future.", ans: "False", exp: "Dịch: Cô ấy muốn trở thành phi công. -> Sai ('I want to be a professional photographer')." },
+      { q: "14. At weekends, she takes photos of buildings and parks in Berlin.", ans: "True", exp: "Dịch: Vào cuối tuần, cô ấy chụp ảnh các tòa nhà và công viên ở Berlin. -> Đúng ('take pictures of old buildings and parks')." }
+    ],
+    matchOptions: [
+      { val: "a", text: "a. Certainly. Here is a map in English." },
+      { val: "b", text: "b. Sorry, the museum is closed on Mondays." },
+      { val: "c", text: "c. Two tickets, please. How much are they?" },
+      { val: "d", text: "d. No problem. Good luck in your test!" },
+      { val: "e", text: "e. That’s great! Can I see your photos?" },
+      { val: "f", text: "f. Yes, let’s meet outside the café at five十五." }
+    ],
+    matchQuestions: [
+      { q: "15. Could I have a map of the museum, please?", ans: "a", exp: "a. Certainly. Here is a map in English. (Xin bản đồ bảo tàng -> Chắc chắn rồi, đây là bản đồ bằng tiếng Anh.)" },
+      { q: "16. Good morning. How can I help you?", ans: "c", exp: "c. Two tickets, please. How much are they? (Nhân viên hỏi cần giúp gì -> Cho tôi 2 vé, giá bao nhiêu vậy?)" },
+      { q: "17. Can we visit the museum on Monday morning?", ans: "b", exp: "b. Sorry, the museum is closed on Mondays. (Thăm bảo tàng sáng thứ Hai được không? -> Xin lỗi, bảo tàng đóng cửa vào thứ Hai.)" },
+      { q: "18. I bought a new camera for my photography course!", ans: "e", exp: "e. That’s great! Can I see your photos? (Khoe mới mua máy ảnh -> Tuyệt quá, cho tôi xem ảnh bạn chụp nhé?)" },
+      { q: "19. Are you free after your class finishes at five?", ans: "f", exp: "f. Yes, let’s meet outside the café at five fifteen. (Tan học lúc 5h bạn có rảnh không? -> Có, gặp nhau lúc 5h15 nhé.)" },
+      { q: "20. Thanks for testing me on the new vocabulary.", ans: "d", exp: "d. No problem. Good luck in your test! (Cảm ơn đã dò từ vựng giúp tôi -> Không có gì, chúc thi tốt!)" }
+    ],
+    mcqQuestions: [
+      { q: "21. The museum __________ open on Mondays.", opts: ["A. doesn’t", "B. isn’t", "C. aren’t"], ans: "B. isn’t", exp: "Chủ ngữ số ít 'The museum' + tính từ 'open' -> 'isn’t'." },
+      { q: "22. Elena and her cousin __________ German; they are Greek.", opts: ["A. aren’t", "B. isn’t", "C. don’t"], ans: "A. aren’t", exp: "Chủ ngữ số nhiều 'Elena and her cousin' -> 'aren’t'." },
+      { q: "23. __________ your photography lessons practical and interesting?", opts: ["A. Is", "B. Do", "C. Are"], ans: "C. Are", exp: "Chủ ngữ số nhiều 'your photography lessons' + tính từ -> 'Are'." },
+      { q: "24. “Are you a student at the art college?” “Yes, __________.”", opts: ["A. I do", "B. I am", "C. you are"], ans: "B. I am", exp: "Câu hỏi 'Are you...?' trả lời khẳng định 'Yes, I am'." },
+      { q: "25. Elena __________ tickets at the museum four mornings a week.", opts: ["A. sells", "B. sell", "C. selling"], ans: "A. sells", exp: "Chủ ngữ số ít 'Elena' -> động từ thêm -s ('sells')." },
+      { q: "26. We __________ have classes on Mondays, so I study at home.", opts: ["A. doesn’t", "B. aren’t", "C. don’t"], ans: "C. don’t", exp: "Chủ ngữ 'We' + V nguyên mẫu 'have' -> 'don’t'." },
+      { q: "27. __________ your cousin live with you in Berlin?", opts: ["A. Does", "B. Do", "C. Is"], ans: "A. Does", exp: "Chủ ngữ số ít 'your cousin' + V nguyên mẫu 'live' -> 'Does'." },
+      { q: "28. Where __________ Elena take photos at the weekend?", opts: ["A. is", "B. do", "C. does"], ans: "C. does", exp: "Chủ ngữ số ít 'Elena' -> 'does'." },
+      { q: "29. “Does the afternoon class finish at five?” “Yes, __________.”", opts: ["A. it is", "B. it does", "C. they do"], ans: "B. it does", exp: "Câu hỏi 'Does the afternoon class...?' trả lời 'Yes, it does'." },
+      { q: "30. Receptionists __________ visitors and answer questions.", opts: ["A. welcome", "B. welcomes", "C. welcoming"], ans: "A. welcome", exp: "Chủ ngữ số nhiều 'Receptionists' -> động từ nguyên mẫu 'welcome'." }
+    ],
+    reorderQuestions: [
+      { q: "31.", words: ["what", "nationality", "are", "the", "new students", "in your class", "?"], ans: "what nationality are the new students in your class?", exp: "Dịch: Các học sinh mới trong lớp bạn mang quốc tịch gì?" },
+      { q: "32.", words: ["the art museum", "isn’t", "open", "on", "Mondays", "."], ans: "the art museum isn’t open on mondays.", exp: "Dịch: Bảo tàng nghệ thuật không mở cửa vào các ngày thứ Hai." },
+      { q: "33.", words: ["how many days a week", "does", "Elena", "work", "at the museum", "?"], ans: "how many days a week does elena work at the museum?", exp: "Dịch: Elena làm việc ở bảo tàng mấy ngày một tuần?" },
+      { q: "34.", words: ["they", "don’t", "usually", "take", "the bus", "to college", "."], ans: "they don’t usually take the bus to college.", exp: "Dịch: Họ thường không đi xe buýt đến trường cao đẳng." },
+      { q: "35.", words: ["what time", "do", "your", "afternoon lessons", "start", "?"], ans: "what time do your afternoon lessons start?", exp: "Dịch: Các tiết học buổi chiều của bạn bắt đầu lúc mấy giờ?" }
+    ],
+    verbQuestions: [
+      { q: "36. The old buildings in this city _____ (be) very beautiful.", ans: ["are"], exp: "Chủ ngữ số nhiều 'The old buildings' -> 'are'." },
+      { q: "37. I _____ (not be) free on Tuesday mornings because I work.", ans: ["am not", "'m not", "’m not"], exp: "Chủ ngữ 'I' với to be phủ định -> 'am not'." },
+      { q: "38. My cousin _____ (study) German every evening.", ans: ["studies"], exp: "Chủ ngữ số ít 'My cousin', động từ 'study' đổi y -> ies thành 'studies'." },
+      { q: "39. The museum _____ (not open) at eight o’clock; it opens at nine.", ans: ["doesn't open", "doesn’t open", "does not open"], exp: "Phủ định hiện tại đơn với chủ ngữ số ít 'The museum' -> 'doesn't open'." },
+      { q: "40. _____ you _____ (take) notes in all your classes?", isSplit: true, part1: "40.", mid: "you", part2: "(take) notes in all your classes?", ans1: "do", ans2: "take", exp: "Chủ ngữ 'you': Do + you + take?" }
+    ]
+  }
+];
+
+// ============================================================================
+// STATE MANAGEMENT FOR ALL 10 TESTS
+// ============================================================================
+let currentTestIndex = 0; // 0 to 9
+const userProgress = {}; // Stores answers & scores per test index
+
+function initStateForTest(idx) {
+  const t = allTests[idx];
+  userProgress[idx] = {
+    submitted: false,
+    scoreA: 0,
+    scoreB: 0,
+    total: 0,
+    showExplain: false,
+    vocabDrops: Array(7).fill(""),
+    tfAnswers: Array(7).fill(""),
+    matchAnswers: Array(6).fill(""),
+    mcqAnswers: Array(10).fill(""),
+    reorderAnswers: t.reorderQuestions.map(() => []),
+    verbAnswers: Array(4).fill(""),
+    verb40_1: "",
+    verb40_2: ""
+  };
+}
+
+// Initialize all 10 tests
+for (let i = 0; i < allTests.length; i++) {
+  initStateForTest(i);
+}
+
+// ============================================================================
+// APPLY THEME & RENDER TOP NAVIGATION TABS
+// ============================================================================
+function applyTheme(idx) {
+  const th = themes[idx];
+  const root = document.documentElement;
+  root.style.setProperty('--primary', th.primary);
+  root.style.setProperty('--primary-dark', th.dark);
+  root.style.setProperty('--primary-light', th.light);
+  root.style.setProperty('--bg', th.bg);
+  root.style.setProperty('--border-color', th.border);
+  root.style.setProperty('--text-main', th.text);
+}
+
+function renderTabs() {
+  const container = document.getElementById('testTabsContainer');
+  container.innerHTML = '';
+  let completedCount = 0;
+
+  allTests.forEach((t, idx) => {
+    const st = userProgress[idx];
+    if (st.submitted) completedCount++;
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = `test-tab ${idx === currentTestIndex ? 'active' : ''}`;
+    btn.onclick = () => switchTest(idx);
+
+    let badgeHtml = '';
+    if (st.submitted) {
+      badgeHtml = `<span class="score-badge">${st.total}/10</span>`;
+    }
+
+    btn.innerHTML = `<span>Đề ${idx + 1}</span>${badgeHtml}`;
+    container.appendChild(btn);
+  });
+
+  document.getElementById('overallProgress').textContent = `Đã hoàn thành: ${completedCount}/10 đề`;
+}
+
+function switchTest(idx) {
+  saveCurrentInputsToState();
+  currentTestIndex = idx;
+  applyTheme(idx);
+  renderTabs();
+  renderCurrentTest();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goToNextTest() {
+  const nextIdx = (currentTestIndex + 1) % allTests.length;
+  switchTest(nextIdx);
+}
+
+function resetCurrentTest() {
+  initStateForTest(currentTestIndex);
+  renderTabs();
+  renderCurrentTest();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ============================================================================
+// RENDER THE ACTIVE TEST (ALL 40 QUESTIONS)
+// ============================================================================
+function renderCurrentTest() {
+  const idx = currentTestIndex;
+  const test = allTests[idx];
+  const state = userProgress[idx];
+
+  document.getElementById('testBadge').textContent = `ĐỀ SỐ ${idx + 1} / 10`;
+  document.getElementById('testTitle').textContent = test.title;
+
+  const quizBody = document.getElementById('quizBody');
+  let html = '';
+
+  // ---------------- SECTION A ----------------
+  html += `<div class="section-title">SECTION A: VOCABULARY (20 QUESTIONS)</div>`;
+
+  // Part 1: Word Bank (7 questions)
+  const usedWords = state.vocabDrops.filter(w => w !== "");
+  const availableWords = test.wordBank.filter(w => !usedWords.includes(w));
+
+  html += `<div class="part-title">Part 1. Complete the sentences with words from the box. (7 questions)</div>`;
+  html += `<div class="text-xs text-slate-500 mb-2">💡 Mẹo: Chạm/click trực tiếp vào từ trong khung để điền vào ô trống tiếp theo, hoặc chạm vào ô đã điền để trả từ về khung.</div>`;
+  html += `<div class="word-bank" id="wordBank">`;
+  availableWords.forEach(w => {
+    html += `<div class="word-item" onclick="clickBankWord('${w.replace(/'/g, "\\'")}')">${w}</div>`;
+  });
+  html += `</div>`;
+
+  test.vocabFill.forEach((item, qIdx) => {
+    const filledWord = state.vocabDrops[qIdx];
+    const parts = item.q.split('_____');
+    html += `
+      <div class="question-card" id="card_v1_${qIdx}">
+        <div>
+          ${parts[0]}
+          <span class="drop-zone" onclick="clearDropZone(${qIdx})" title="Nhấn để xóa từ này">${filledWord || ''}</span>
+          ${parts[1] || ''}
+        </div>
+        <span class="status-tag" id="status_v1_${qIdx}"></span>
+        <div class="explanation-box">${item.exp}</div>
+      </div>
+    `;
+  });
+
+  // Part 2: Reading True / False (7 questions)
+  html += `<div class="part-title">Part 2. Read the text. Choose TRUE or FALSE. (7 questions)</div>`;
+  html += `
+    <div class="reading-box">
+      <div class="font-extrabold text-base mb-2" style="color: var(--text-main);">${test.readingTitle}</div>
+      ${test.readingText}
+    </div>
+  `;
+
+  test.tfQuestions.forEach((item, qIdx) => {
+    const sel = state.tfAnswers[qIdx];
+    html += `
+      <div class="question-card" id="card_tf_${qIdx}">
+        <div class="font-medium">${item.q}</div>
+        <div class="tf-options">
+          <button type="button" class="tf-btn ${sel === 'True' ? 'selected' : ''}" onclick="selectTF(${qIdx}, 'True')">True</button>
+          <button type="button" class="tf-btn ${sel === 'False' ? 'selected' : ''}" onclick="selectTF(${qIdx}, 'False')">False</button>
+        </div>
+        <span class="status-tag" id="status_tf_${qIdx}"></span>
+        <div class="explanation-box">${item.exp}</div>
+      </div>
+    `;
+  });
+
+  // Part 3: Matching (6 questions)
+  html += `<div class="part-title">Part 3. Match sentences 15–20 with responses a–f. (6 questions)</div>`;
+  test.matchQuestions.forEach((item, qIdx) => {
+    const sel = state.matchAnswers[qIdx];
+    html += `
+      <div class="question-card" id="card_match_${qIdx}">
+        <div class="font-bold">${item.q}</div>
+        <select class="matching-select" onchange="selectMatch(${qIdx}, this.value)">
+          <option value="">-- Chọn câu phản hồi (a - f) --</option>
+          ${test.matchOptions.map(opt => {
+            const isChosenElsewhere = state.matchAnswers.includes(opt.val) && sel !== opt.val;
+            return `<option value="${opt.val}" ${sel === opt.val ? 'selected' : ''} ${isChosenElsewhere ? 'style="display:none;"' : ''}>${opt.text}</option>`;
+          }).join('')}
+        </select>
+        <span class="status-tag" id="status_match_${qIdx}"></span>
+        <div class="explanation-box"><b>Đáp án đúng:</b> ${item.exp}</div>
+      </div>
+    `;
+  });
+
+  // ---------------- SECTION B ----------------
+  html += `<div class="section-title">SECTION B: GRAMMAR (20 QUESTIONS)</div>`;
+
+  // Part 1: Multiple Choice (10 questions)
+  html += `<div class="part-title">Part 1. Choose the correct answer. (10 questions)</div>`;
+  test.mcqQuestions.forEach((item, qIdx) => {
+    const sel = state.mcqAnswers[qIdx];
+    html += `
+      <div class="question-card" id="card_mcq_${qIdx}">
+        <div class="font-medium">${item.q}</div>
+        <div class="mcq-options">
+          ${item.opts.map(opt => `
+            <button type="button" class="mcq-btn ${sel === opt ? 'selected' : ''}" onclick="selectMCQ(${qIdx}, '${opt.replace(/'/g, "\\'")}')">${opt}</button>
+          `).join('')}
+        </div>
+        <span class="status-tag" id="status_mcq_${qIdx}"></span>
+        <div class="explanation-box"><b>Đáp án đúng: ${item.ans}</b> — ${item.exp}</div>
+      </div>
+    `;
+  });
+
+  // Part 2: Reorder Words (5 questions)
+  html += `<div class="part-title">Part 2. Put the words in the correct order. (5 questions)</div>`;
+  test.reorderQuestions.forEach((item, qIdx) => {
+    const chosenIndices = state.reorderAnswers[qIdx];
+    const chosenWords = chosenIndices.map(i => ({ word: item.words[i], origIdx: i }));
+    const bankWords = item.words
+      .map((w, i) => ({ word: w, origIdx: i }))
+      .filter(obj => !chosenIndices.includes(obj.origIdx));
+
+    html += `
+      <div class="question-card" id="card_reorder_${qIdx}">
+        <div class="font-bold">${item.q} <span class="text-xs font-normal text-slate-500">(Chạm vào từng cụm từ bên dưới để xếp thành câu hoàn chỉnh)</span></div>
+        <div class="reorder-zone">
+          ${chosenWords.map(obj => `
+            <span class="reorder-word" onclick="removeReorderWord(${qIdx}, ${obj.origIdx})">${obj.word}</span>
+          `).join('')}
+        </div>
+        <div class="word-bank mt-2 mb-0">
+          ${bankWords.map(obj => `
+            <span class="reorder-word bg-white" onclick="addReorderWord(${qIdx}, ${obj.origIdx})">${obj.word}</span>
+          `).join('')}
+        </div>
+        <span class="status-tag" id="status_reorder_${qIdx}"></span>
+        <div class="explanation-box"><b>Câu đúng:</b> ${item.ans}<br>${item.exp}</div>
+      </div>
+    `;
+  });
+
+  // Part 3: Verb Forms in Brackets (5 questions)
+  html += `<div class="part-title">Part 3. Write the correct form of the verbs in the brackets. (5 questions)</div>`;
+  test.verbQuestions.forEach((item, qIdx) => {
+    if (item.isSplit) {
+      html += `
+        <div class="question-card" id="card_verb_${qIdx}">
+          <div class="leading-loose">
+            <b>${item.part1}</b>
+            <input type="text" class="fill-input" style="width:110px" id="verb40_1" value="${state.verb40_1}" oninput="userProgress[currentTestIndex].verb40_1 = this.value" placeholder="Do / Does" autocomplete="off">
+            ${item.mid}
+            <input type="text" class="fill-input" style="width:120px" id="verb40_2" value="${state.verb40_2}" oninput="userProgress[currentTestIndex].verb40_2 = this.value" placeholder="verb" autocomplete="off">
+            ${item.part2}
+          </div>
+          <span class="status-tag" id="status_verb_${qIdx}"></span>
+          <div class="explanation-box"><b>Đáp án đúng: ${item.ans1} ... ${item.ans2}</b> — ${item.exp}</div>
+        </div>
+      `;
+    } else {
+      const parts = item.q.split('_____');
+      const val = state.verbAnswers[qIdx] || "";
+      html += `
+        <div class="question-card" id="card_verb_${qIdx}">
+          <div class="leading-loose">
+            ${parts[0]}
+            <input type="text" class="fill-input" id="verb_${qIdx}" value="${val}" oninput="userProgress[currentTestIndex].verbAnswers[${qIdx}] = this.value" autocomplete="off">
+            ${parts[1]}
+          </div>
+          <span class="status-tag" id="status_verb_${qIdx}"></span>
+          <div class="explanation-box"><b>Đáp án đúng: ${item.ans[0]}</b> — ${item.exp}</div>
+        </div>
+      `;
+    }
+  });
+
+  quizBody.innerHTML = html;
+
+  // If this test was already submitted, re-apply grading visuals
+  if (state.submitted) {
+    gradeCurrentTest(false);
+  } else {
+    document.getElementById('resultBox').style.display = 'none';
+  }
+}
+
+// ============================================================================
+// INTERACTION HANDLERS
+// ============================================================================
+function saveCurrentInputsToState() {
+  const st = userProgress[currentTestIndex];
+  for (let i = 0; i < 4; i++) {
+    const el = document.getElementById(`verb_${i}`);
+    if (el) st.verbAnswers[i] = el.value;
+  }
+  const el40_1 = document.getElementById('verb40_1');
+  const el40_2 = document.getElementById('verb40_2');
+  if (el40_1) st.verb40_1 = el40_1.value;
+  if (el40_2) st.verb40_2 = el40_2.value;
+}
+
+function clickBankWord(word) {
+  const st = userProgress[currentTestIndex];
+  const emptyIdx = st.vocabDrops.findIndex(w => w === "");
+  if (emptyIdx !== -1) {
+    st.vocabDrops[emptyIdx] = word;
+    renderCurrentTest();
+  }
+}
+
+function clearDropZone(qIdx) {
+  const st = userProgress[currentTestIndex];
+  if (st.vocabDrops[qIdx] !== "") {
+    st.vocabDrops[qIdx] = "";
+    renderCurrentTest();
+  }
+}
+
+function selectTF(qIdx, val) {
+  userProgress[currentTestIndex].tfAnswers[qIdx] = val;
+  renderCurrentTest();
+}
+
+function selectMatch(qIdx, val) {
+  userProgress[currentTestIndex].matchAnswers[qIdx] = val;
+  renderCurrentTest();
+}
+
+function selectMCQ(qIdx, val) {
+  userProgress[currentTestIndex].mcqAnswers[qIdx] = val;
+  renderCurrentTest();
+}
+
+function addReorderWord(qIdx, wordOrigIdx) {
+  userProgress[currentTestIndex].reorderAnswers[qIdx].push(wordOrigIdx);
+  renderCurrentTest();
+}
+
+function removeReorderWord(qIdx, wordOrigIdx) {
+  const arr = userProgress[currentTestIndex].reorderAnswers[qIdx];
+  const pos = arr.indexOf(wordOrigIdx);
+  if (pos !== -1) {
+    arr.splice(pos, 1);
+    renderCurrentTest();
+  }
+}
+
+// ============================================================================
+// GRADING & EXPLANATION LOGIC
+// ============================================================================
+function markCard(cardId, statusId, isCorrect, correctText) {
+  const card = document.getElementById(cardId);
+  const status = document.getElementById(statusId);
+  if (!card || !status) return;
+
+  card.classList.remove('is-correct', 'is-incorrect');
+  if (isCorrect) {
+    card.classList.add('is-correct');
+    status.innerHTML = `<span class="status-correct">✓ Đúng</span>`;
+  } else {
+    card.classList.add('is-incorrect');
+    status.innerHTML = `<span class="status-incorrect">✗ Sai (Đáp án đúng: ${correctText})</span>`;
+  }
+}
+
+function normalizeSentence(str) {
+  return str
+    .toLowerCase()
+    .replace(/[’']/g, "'")
+    .replace(/\s+/g, " ")
+    .replace(/\s+([?.!,])/g, "$1")
+    .trim();
+}
+
+function gradeCurrentTest(shouldScroll = true) {
+  saveCurrentInputsToState();
+  const idx = currentTestIndex;
+  const test = allTests[idx];
+  const st = userProgress[idx];
+
+  let correctA = 0; // out of 20
+  let correctB = 0; // out of 20
+
+  // 1. Grade Vocab Fill (7 questions)
+  test.vocabFill.forEach((item, qIdx) => {
+    const userAns = (st.vocabDrops[qIdx] || "").trim().toLowerCase();
+    const isOk = userAns === item.ans.toLowerCase();
+    if (isOk) correctA++;
+    markCard(`card_v1_${qIdx}`, `status_v1_${qIdx}`, isOk, item.ans);
+  });
+
+  // 2. Grade Reading TF (7 questions)
+  test.tfQuestions.forEach((item, qIdx) => {
+    const userAns = st.tfAnswers[qIdx];
+    const isOk = userAns === item.ans;
+    if (isOk) correctA++;
+    markCard(`card_tf_${qIdx}`, `status_tf_${qIdx}`, isOk, item.ans);
+  });
+
+  // 3. Grade Matching (6 questions)
+  test.matchQuestions.forEach((item, qIdx) => {
+    const userAns = (st.matchAnswers[qIdx] || "").toLowerCase();
+    const isOk = userAns === item.ans.toLowerCase();
+    if (isOk) correctA++;
+    markCard(`card_match_${qIdx}`, `status_match_${qIdx}`, isOk, item.ans);
+  });
+
+  // 4. Grade Grammar MCQ (10 questions)
+  test.mcqQuestions.forEach((item, qIdx) => {
+    const userAns = st.mcqAnswers[qIdx];
+    const isOk = userAns === item.ans;
+    if (isOk) correctB++;
+    markCard(`card_mcq_${qIdx}`, `status_mcq_${qIdx}`, isOk, item.ans);
+  });
+
+  // 5. Grade Reorder (5 questions)
+  test.reorderQuestions.forEach((item, qIdx) => {
+    const chosenWords = st.reorderAnswers[qIdx].map(i => item.words[i]).join(" ");
+    const isOk = normalizeSentence(chosenWords) === normalizeSentence(item.ans);
+    if (isOk) correctB++;
+    markCard(`card_reorder_${qIdx}`, `status_reorder_${qIdx}`, isOk, item.ans);
+  });
+
+  // 6. Grade Verb Forms (5 questions)
+  test.verbQuestions.forEach((item, qIdx) => {
+    if (item.isSplit) {
+      const u1 = normalizeSentence(st.verb40_1);
+      const u2 = normalizeSentence(st.verb40_2);
+      const isOk = u1 === item.ans1.toLowerCase() && u2 === item.ans2.toLowerCase();
+      if (isOk) correctB++;
+      markCard(`card_verb_${qIdx}`, `status_verb_${qIdx}`, isOk, `${item.ans1} ... ${item.ans2}`);
+    } else {
+      const u = normalizeSentence(st.verbAnswers[qIdx] || "");
+      const validList = item.ans.map(a => normalizeSentence(a));
+      const isOk = validList.includes(u);
+      if (isOk) correctB++;
+      markCard(`card_verb_${qIdx}`, `status_verb_${qIdx}`, isOk, item.ans[0]);
+    }
+  });
+
+  const scoreA = Math.round((correctA / 20) * 5 * 100) / 100;
+  const scoreB = Math.round((correctB / 20) * 5 * 100) / 100;
+  const total = Math.round((scoreA + scoreB) * 100) / 100;
+
+  st.submitted = true;
+  st.scoreA = scoreA;
+  st.scoreB = scoreB;
+  st.total = total;
+
+  document.getElementById('resultHeader').textContent = `KẾT QUẢ ĐỀ SỐ ${idx + 1}`;
+  document.getElementById('scoreA').textContent = `Section A (Vocabulary): ${scoreA} / 5.0 (${correctA}/20 câu đúng)`;
+  document.getElementById('scoreB').textContent = `Section B (Grammar): ${scoreB} / 5.0 (${correctB}/20 câu đúng)`;
+  document.getElementById('scoreTotal').textContent = `TỔNG ĐIỂM ĐỀ ${idx + 1}: ${total} / 10.0`;
+
+  const resultBox = document.getElementById('resultBox');
+  resultBox.style.display = 'block';
+
+  // Apply explanation visibility state
+  const boxes = document.querySelectorAll('.explanation-box');
+  boxes.forEach(b => {
+    b.style.display = st.showExplain ? 'block' : 'none';
+  });
+  document.getElementById('explainBtn').textContent = st.showExplain ? 'Ẩn Dịch và Giải thích' : 'Hiện Dịch và Giải thích đáp án';
+
+  renderTabs();
+
+  if (shouldScroll) {
+    resultBox.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function toggleExplanation() {
+  const st = userProgress[currentTestIndex];
+  st.showExplain = !st.showExplain;
+  const boxes = document.querySelectorAll('.explanation-box');
+  boxes.forEach(b => {
+    b.style.display = st.showExplain ? 'block' : 'none';
+  });
+  document.getElementById('explainBtn').textContent = st.showExplain ? 'Ẩn Dịch và Giải thích' : 'Hiện Dịch và Giải thích đáp án';
+}
+
+window.onload = () => {
+  applyTheme(0);
+  renderTabs();
+  renderCurrentTest();
+};
+</script>
+</body>
+</html>
